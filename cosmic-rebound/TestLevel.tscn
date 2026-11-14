@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dijwtrykowxcx" path="res://icon.svg" id="1_1kog2"]
 [ext_resource type="Texture2D" uid="uid://bcu2mt4f3st1b" path="res://Space.png" id="1_2xot7"]
 [ext_resource type="PackedScene" uid="uid://byaxmc1cpcxu8" path="res://comet.tscn" id="1_y1jsw"]
+[ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://waypoint_marker.tscn" id="4_waekl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggs6p"]
 
@@ -59,3 +60,10 @@ shape = SubResource("RectangleShape2D_rddtw")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2" unique_id=928378266]
 position = Vector2(37062, -10487)
 shape = SubResource("RectangleShape2D_rddtw")
+
+[node name="Planet" type="Sprite2D" parent="." unique_id=740316866]
+position = Vector2(5319, -2241)
+texture = ExtResource("1_1kog2")
+
+[node name="WaypointMarker" parent="Planet" unique_id=657557681 instance=ExtResource("4_waekl")]
+screen_margin = 93.64
