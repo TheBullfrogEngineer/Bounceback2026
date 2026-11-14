@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d263dfso6pxwe"]
+
+[ext_resource type="Texture2D" uid="uid://brfqugakh4i3x" path="res://art/art/art_atlas.png" id="1_ppeer"]
+
+[node name="WaypointMarker" type="Sprite2D" unique_id=657557681]
+z_index = 71
+texture_filter = 1
+texture = ExtResource("1_ppeer")
+hframes = 5
