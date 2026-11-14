@@ -41,11 +41,7 @@ func _physics_process(delta: float) -> void:
 		dashing = true
 		dash_direction = (get_global_mouse_position() - global_position).normalized()
 		rotation = dash_direction.angle()
-		if $AudioStreamPlayer2D.playing == false: # Optional: prevents overlapping sounds
-			$AudioStreamPlayer2D.play()
-		can_dash = false
 		$dash_timer.start()
-		$dash_cooldown.start()
 		
 	if Input.is_action_just_pressed("toggle_mode"):
 		_toggle_mode()
@@ -117,7 +113,6 @@ func _handle_wall_collisions() -> void:
 			else:
 				dashing = false
 				velocity = Vector2.ZERO
-				_apply_stun()
 			break
 
 		if collider and collider.is_in_group("enemy") and mode == Mode.DASH:
@@ -130,7 +125,6 @@ func _handle_wall_collisions() -> void:
 		else:
 			dashing = false
 			velocity = Vector2.ZERO
-			_apply_stun()
 		break
 
 func _kill_enemy(enemy: Node) -> void:
@@ -147,18 +141,8 @@ func take_damage(amount: int) -> void:
 		print("GAME OVER")
 		get_tree().reload_current_scene()
 
-
-func _apply_stun() -> void:
-	can_move = false
-
-func _on_stun_timer_timeout() -> void:
-	can_move = true
-
 func _on_dash_timer_timeout() -> void:
 	dashing = false
-
-func _on_dash_cooldown_timeout() -> void:
-	can_dash = true
 	
 func hazard_kill() -> void:
 	# We'll have to add here a respawn or something

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://byaxmc1cpcxu8"]
 
 [ext_resource type="Script" uid="uid://v35o8hab2mob" path="res://comet.gd" id="1_5wt7a"]
+[ext_resource type="Texture2D" uid="uid://dijwtrykowxcx" path="res://icon.svg" id="2_imve7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
 
@@ -8,6 +9,16 @@
 script = ExtResource("1_5wt7a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1499366352]
+texture = ExtResource("2_imve7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=636722214]
 shape = SubResource("CircleShape2D_4ayxd")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1076081098]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="dash_timer" type="Timer" parent="." unique_id=318837230]
+
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
