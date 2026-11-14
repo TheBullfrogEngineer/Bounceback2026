@@ -22,6 +22,7 @@ var bounce_lock = false
 func _ready() -> void:
 	hp = max_hp
 	sprite.play("idle")
+	add_to_group("player")
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
