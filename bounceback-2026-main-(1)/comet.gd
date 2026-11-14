@@ -21,6 +21,7 @@ var bounce_lock = false
 func _ready() -> void:
 	hp = max_hp
 	sprite.play("moving")
+	add_to_group("player")
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
@@ -42,8 +43,9 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		else:
 			if Input.is_action_pressed("propel"):
-				var dir = (get_global_mouse_position() - global_position).normalized()
-				velocity = speed * dir
+				#var dir = (get_global_mouse_position() - global_position).normalized()
+				#velocity = speed * dir
+				pass
 			else:
 				velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	else:

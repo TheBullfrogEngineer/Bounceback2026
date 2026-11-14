@@ -6,7 +6,7 @@
 [node name="WaypointMarker" type="Sprite2D" unique_id=657557681]
 z_index = 71
 texture_filter = 1
-scale = Vector2(22.855, 22.855)
+scale = Vector2(10, 10)
 texture = ExtResource("1_ppeer")
 hframes = 5
 script = ExtResource("2_0k0rx")

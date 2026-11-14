@@ -2,8 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dijwtrykowxcx" path="res://icon.svg" id="1_1kog2"]
 [ext_resource type="Texture2D" uid="uid://bcu2mt4f3st1b" path="res://Space.png" id="1_2xot7"]
+[ext_resource type="Script" uid="uid://b1inst3spdbmo" path="res://test_level.gd" id="1_mvtj7"]
 [ext_resource type="PackedScene" uid="uid://byaxmc1cpcxu8" path="res://comet.tscn" id="1_y1jsw"]
 [ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://waypoint_marker.tscn" id="4_waekl"]
+[ext_resource type="PackedScene" uid="uid://cuvs10hp7qs3d" path="res://enemy.tscn" id="6_xlsm3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggs6p"]
 
@@ -16,55 +18,103 @@ size = Vector2(47493, 631.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rddtw"]
 size = Vector2(976, 29196)
 
-[node name="Level" type="Node2D" unique_id=574406350]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
 
-[node name="Background2" type="Sprite2D" parent="." unique_id=393909074]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dim44"]
+size = Vector2(46.80005, 812.9501)
+
+[node name="Level" type="Node2D" unique_id=574406350]
+script = ExtResource("1_mvtj7")
+
+[node name="Backgrounds" type="Node2D" parent="." unique_id=99285249]
+
+[node name="Background2" type="Sprite2D" parent="Backgrounds" unique_id=393909074]
 position = Vector2(7844.0005, 56.000004)
 scale = Vector2(26.51004, 17.511705)
 texture = ExtResource("1_2xot7")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=656807228]
+[node name="Background" type="Sprite2D" parent="Backgrounds" unique_id=656807228]
 position = Vector2(37.000023, 23)
 scale = Vector2(26.51004, 17.511705)
 texture = ExtResource("1_2xot7")
 
-[node name="Comet" parent="." unique_id=284270887 instance=ExtResource("1_y1jsw")]
-position = Vector2(482, -132)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=283150803]
+[node name="Asteriod" type="StaticBody2D" parent="." unique_id=283150803]
 physics_material_override = SubResource("PhysicsMaterial_ggs6p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1825357068]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteriod" unique_id=1825357068]
 position = Vector2(171.5, 0)
 shape = SubResource("RectangleShape2D_4ayxd")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=235210165]
+[node name="Sprite2D" type="Sprite2D" parent="Asteriod" unique_id=235210165]
 position = Vector2(182, 0)
 scale = Vector2(3.84375, 1)
 texture = ExtResource("1_1kog2")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=333686309]
+[node name="World Borders" type="StaticBody2D" parent="." unique_id=333686309]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=22190430]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Borders" unique_id=22190430]
 position = Vector2(13243, 4027)
 shape = SubResource("RectangleShape2D_ggs6p")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1687773162]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World Borders" unique_id=1687773162]
 position = Vector2(13512.5, -24834.75)
 shape = SubResource("RectangleShape2D_ggs6p")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2" unique_id=325724919]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Borders" unique_id=325724919]
 position = Vector2(-10448, -10616)
 shape = SubResource("RectangleShape2D_rddtw")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2" unique_id=928378266]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World Borders" unique_id=928378266]
 position = Vector2(37062, -10487)
 shape = SubResource("RectangleShape2D_rddtw")
 
 [node name="Planet" type="Sprite2D" parent="." unique_id=740316866]
 position = Vector2(5319, -2241)
-scale = Vector2(3.49, 3.49)
+scale = Vector2(5, 5)
 texture = ExtResource("1_1kog2")
 
 [node name="WaypointMarker" parent="Planet" unique_id=657557681 instance=ExtResource("4_waekl")]
 screen_margin = 93.64
+
+[node name="Area2D" type="Area2D" parent="Planet" unique_id=1102510528]
+scale = Vector2(18.925, 18.925)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/Area2D" unique_id=453736016]
+shape = SubResource("CircleShape2D_4ayxd")
+
+[node name="Borders" type="StaticBody2D" parent="Planet" unique_id=1978039376]
+position = Vector2(8.495, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/Borders" unique_id=444152380]
+position = Vector2(-433.4948, 32.30005)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_dim44")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Planet/Borders" unique_id=1950844322]
+position = Vector2(387.10498, 42.274994)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_dim44")
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Planet/Borders" unique_id=964533030]
+position = Vector2(-27.045044, -375.99997)
+rotation = 1.5707964
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_dim44")
+disabled = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Planet/Borders" unique_id=604811880]
+position = Vector2(-16.895044, 438.79996)
+rotation = 1.5707964
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_dim44")
+disabled = true
+
+[node name="Comet" parent="." unique_id=284270887 instance=ExtResource("1_y1jsw")]
+position = Vector2(482, -132)
+
+[node name="CharacterBody2D" parent="." unique_id=543750703 instance=ExtResource("6_xlsm3")]
+position = Vector2(-2000, 0)
+
+[connection signal="body_entered" from="Planet/Area2D" to="." method="_on_area_2d_body_entered"]
