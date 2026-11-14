@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dijwtrykowxcx" path="res://icon.svg" id="2_imve7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
+radius = 85.37564
 
 [node name="Comet" type="CharacterBody2D" unique_id=284270887]
 script = ExtResource("1_5wt7a")
@@ -20,5 +21,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="dash_timer" type="Timer" parent="." unique_id=318837230]
+wait_time = 0.4
 
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

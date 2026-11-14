@@ -43,9 +43,6 @@ func _physics_process(delta: float) -> void:
 		rotation = dash_direction.angle()
 		$dash_timer.start()
 		
-	if Input.is_action_just_pressed("toggle_mode"):
-		_toggle_mode()
-		
 	if can_move:
 		if dashing:
 			velocity = dash_speed * dash_direction
@@ -79,14 +76,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		move_and_slide()
 		_handle_wall_collisions()
-
-func _toggle_mode() -> void:
-	if mode == Mode.DASH:
-		mode = Mode.BOUNCE
-		Engine.time_scale = hypertime_scale
-		get_tree().create_timer(hypertime_duration, true, false, true).timeout.connect(_end_hypertime)
-	else:
-		_end_hypertime()
 
 func _end_hypertime() -> void:
 	mode = Mode.DASH
