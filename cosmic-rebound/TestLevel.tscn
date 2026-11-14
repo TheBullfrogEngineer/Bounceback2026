@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://8modw0gf0uon"]
+
+[ext_resource type="PackedScene" uid="uid://byaxmc1cpcxu8" path="res://comet.tscn" id="1_y1jsw"]
+
+[node name="Node2D" type="Node2D" unique_id=574406350]
+
+[node name="Comet" parent="." unique_id=284270887 instance=ExtResource("1_y1jsw")]
