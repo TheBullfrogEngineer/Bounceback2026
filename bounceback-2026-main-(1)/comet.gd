@@ -1,3 +1,4 @@
+
 extends CharacterBody2D
 
 @export var speed = 750.0
@@ -20,22 +21,20 @@ var bounce_lock = false
 
 func _ready() -> void:
 	hp = max_hp
-	sprite.play("moving")
-	add_to_group("player")
+	sprite.play("idle")
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
-		if velocity.length() > 1.0:
-			rotation = lerp_angle(rotation, velocity.angle(), 20 * delta)
+	if velocity.length() > 1.0:
+		rotation = lerp_angle(rotation, velocity.angle(), 20 * delta)
 
-@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dash") and can_dash:
 		dashing = true
 		dash_direction = (get_global_mouse_position() - global_position).normalized()
 		rotation = dash_direction.angle()
 		$dash_timer.start()
-		
+
 	if can_move:
 		if dashing:
 			velocity = dash_speed * dash_direction
@@ -50,7 +49,7 @@ func _physics_process(delta: float) -> void:
 				velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	else:
 		velocity = Vector2.ZERO
-		
+
 	move_and_slide()
 	_handle_wall_collisions()
 
@@ -71,6 +70,16 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		_handle_wall_collisions()
 
+	_update_animation()
+
+
+func _update_animation() -> void:
+	if velocity.length() > 1.0:
+		if sprite.animation != "moving":
+			sprite.play("moving")
+	else:
+		if sprite.animation != "idle":
+			sprite.play("idle")
 
 
 func _handle_wall_collisions() -> void:
@@ -85,16 +94,16 @@ func _handle_wall_collisions() -> void:
 			elif not dashing:
 				take_damage(1)
 			continue
-		
+
 		if dashing:
 			velocity = velocity.bounce(normal) * bounce_speed_retention
 			dash_direction = velocity.normalized()
 			rotation = dash_direction.angle()
 
-
 		if collider and collider.is_in_group("enemy"):
 			_kill_enemy(collider)
 			continue
+
 		velocity = velocity.bounce(normal) * bounce_speed_retention
 		dash_direction = velocity.normalized()
 		rotation = dash_direction.angle()
@@ -106,20 +115,21 @@ func _kill_enemy(enemy: Node) -> void:
 	else:
 		enemy.queue_free()
 
+
 func take_damage(amount: int) -> void:
 	hp -= amount
 	print("HP: ", hp)
-	
+
 	if hp <= 0:
 		print("GAME OVER")
 		get_tree().reload_current_scene()
 
+
 func _on_dash_timer_timeout() -> void:
 	dashing = false
-	
+
+
 func hazard_kill() -> void:
-	# We'll have to add here a respawn or something
 	global_position = Vector2.ZERO
 	velocity = Vector2.ZERO
 	dashing = false
-	
