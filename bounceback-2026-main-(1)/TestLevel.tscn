@@ -63,6 +63,7 @@ shape = SubResource("RectangleShape2D_rddtw")
 
 [node name="Planet" type="Sprite2D" parent="." unique_id=740316866]
 position = Vector2(5319, -2241)
+scale = Vector2(3.49, 3.49)
 texture = ExtResource("1_1kog2")
 
 [node name="WaypointMarker" parent="Planet" unique_id=657557681 instance=ExtResource("4_waekl")]

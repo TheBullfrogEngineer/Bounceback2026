@@ -77,10 +77,12 @@ script = ExtResource("1_5wt7a")
 shape = SubResource("CircleShape2D_4ayxd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1676049854]
-position = Vector2(227, -20)
+position = Vector2(-221, 42)
+rotation = 2.8920107
 scale = Vector2(9.796875, 8.679687)
 sprite_frames = SubResource("SpriteFrames_rxpre")
 animation = &"moving"
+flip_v = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1076081098]
 zoom = Vector2(0.2, 0.2)
