@@ -8,18 +8,13 @@ extends CharacterBody2D
 @export var max_hp: int = 3
 
 @export var bounce_lock_duration = 0.2
-@export var hypertime_scale = 1.75
-@export var hypertime_duration = 5.0
 var hp: int = max_hp
-var is_invincible: bool = false
 var dashing = false
 var direction: Vector2 = Vector2.ZERO
 var dash_direction: Vector2 = Vector2.RIGHT
 var can_move = true
 var can_dash = true
 var bounce_lock = false
-enum Mode { DASH, BOUNCE }
-var mode: Mode = Mode.DASH
 
 
 func _ready() -> void:
@@ -28,10 +23,6 @@ func _ready() -> void:
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
-	if mode == Mode.DASH:
-		if not dashing:
-			look_at(get_global_mouse_position())
-	else: # BOUNCE mode
 		if velocity.length() > 1.0:
 			rotation = lerp_angle(rotation, velocity.angle(), 20 * delta)
 
@@ -60,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	_handle_wall_collisions()
 
-	if dashing and mode == Mode.BOUNCE:
+	if dashing:
 		var collision := move_and_collide(velocity * delta)
 		if collision:
 			var collider := collision.get_collider()
@@ -77,9 +68,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		_handle_wall_collisions()
 
-func _end_hypertime() -> void:
-	mode = Mode.DASH
-	Engine.time_scale = 1.0
+
 
 func _handle_wall_collisions() -> void:
 	for i in get_slide_collision_count():
@@ -88,33 +77,25 @@ func _handle_wall_collisions() -> void:
 		var normal := collision.get_normal()
 
 		if collider and collider.is_in_group("enemy"):
-			if dashing and mode == Mode.DASH:
+			if dashing:
 				_kill_enemy(collider)
 			elif not dashing:
 				take_damage(1)
 			continue
 		
 		if dashing:
-			if mode == Mode.BOUNCE:
-				velocity = velocity.bounce(normal) * bounce_speed_retention
-				dash_direction = velocity.normalized()
-				rotation = dash_direction.angle()
-			else:
-				dashing = false
-				velocity = Vector2.ZERO
-			break
-
-		if collider and collider.is_in_group("enemy") and mode == Mode.DASH:
-			_kill_enemy(collider)
-			continue
-		if mode == Mode.BOUNCE:
 			velocity = velocity.bounce(normal) * bounce_speed_retention
 			dash_direction = velocity.normalized()
 			rotation = dash_direction.angle()
-		else:
-			dashing = false
-			velocity = Vector2.ZERO
-		break
+
+
+		if collider and collider.is_in_group("enemy"):
+			_kill_enemy(collider)
+			continue
+		velocity = velocity.bounce(normal) * bounce_speed_retention
+		dash_direction = velocity.normalized()
+		rotation = dash_direction.angle()
+
 
 func _kill_enemy(enemy: Node) -> void:
 	if enemy.has_method("die"):
