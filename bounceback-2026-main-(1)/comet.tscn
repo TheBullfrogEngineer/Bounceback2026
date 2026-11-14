@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://v35o8hab2mob" path="res://comet.gd" id="1_5wt7a"]
 [ext_resource type="Texture2D" uid="uid://dtcosbg8ymdx4" path="res://Animations/3×3 Pixel-Art Fireball Spritesheet.png" id="2_3s670"]
-[ext_resource type="Texture2D" uid="uid://doj1iwknwncth" path="res://Animations/sprite-animation-64x64-8f-sheet.png" id="2_imve7"]
+[ext_resource type="Texture2D" uid="uid://c2wyetr0iaqm1" path="res://Animations/sprite-animation-64x64-8f-sheet.png" id="2_imve7"]
+[ext_resource type="PackedScene" uid="uid://cuvs10hp7qs3d" path="res://enemy.tscn" id="2_k8xgu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
 radius = 85.37564
@@ -132,8 +133,15 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Curve2D" id="Curve2D_3s670"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2000.252, 0, 0, 0, 0, 0, 2000, 2000, 0, 0, 0, 0, 0, 2000.043)
+}
+point_count = 4
+
 [node name="Player" type="CharacterBody2D" unique_id=284270887]
 script = ExtResource("1_5wt7a")
+enemy_scene = ExtResource("2_k8xgu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=636722214]
 shape = SubResource("CircleShape2D_4ayxd")
@@ -154,4 +162,15 @@ position_smoothing_speed = 10.0
 [node name="dash_timer" type="Timer" parent="." unique_id=318837230]
 wait_time = 0.4
 
+[node name="EnemySpawnPath" type="Path2D" parent="." unique_id=2112720373]
+position = Vector2(-1789, -284.79468)
+scale = Vector2(1.6980001, 0.5519973)
+curve = SubResource("Curve2D_3s670")
+
+[node name="SpawnLocation" type="PathFollow2D" parent="EnemySpawnPath" unique_id=1513761111]
+
+[node name="Timer" type="Timer" parent="." unique_id=1440721725]
+autostart = true
+
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

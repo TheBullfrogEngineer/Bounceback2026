@@ -16,7 +16,8 @@ var dash_direction: Vector2 = Vector2.RIGHT
 var can_move = true
 var can_dash = true
 var bounce_lock = false
-
+@export var enemy_scene: PackedScene # Drag your enemy.tscn here in the Inspector
+@onready var spawn_location: PathFollow2D = $EnemySpawnPath/SpawnLocation
 @onready var sprite = $AnimatedSprite2D
 
 func _ready() -> void:
@@ -134,3 +135,16 @@ func hazard_kill() -> void:
 	global_position = Vector2.ZERO
 	velocity = Vector2.ZERO
 	dashing = false
+
+
+func _on_timer_timeout() -> void:
+	if enemy_scene == null:
+		return
+	# 1. Pick a random point along the Path2D perimeter
+	spawn_location.progress_ratio = randf()
+	# 2. Instantiate the enemy
+	var enemy = enemy_scene.instantiate()
+	# 3. Set its global position to the random point
+	enemy.global_position = spawn_location.global_position
+	# 4. Add the enemy to the main game world (NOT as a child of the player)
+	get_tree().current_scene.add_child(enemy)
