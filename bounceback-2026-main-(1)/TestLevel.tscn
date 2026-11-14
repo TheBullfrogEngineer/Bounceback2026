@@ -1,16 +1,15 @@
 [gd_scene format=3 uid="uid://8modw0gf0uon"]
 
-[ext_resource type="Texture2D" uid="uid://dijwtrykowxcx" path="res://icon.svg" id="1_1kog2"]
 [ext_resource type="Texture2D" uid="uid://bcu2mt4f3st1b" path="res://Space.png" id="1_2xot7"]
-[ext_resource type="Script" uid="uid://b1inst3spdbmo" path="res://test_level.gd" id="1_mvtj7"]
+[ext_resource type="Script" uid="uid://bci1leq85ntvp" path="res://test_level.gd" id="1_mvtj7"]
 [ext_resource type="PackedScene" uid="uid://byaxmc1cpcxu8" path="res://comet.tscn" id="1_y1jsw"]
+[ext_resource type="Texture2D" uid="uid://dqfel3v81fkmp" path="res://Animations/Asteroid 3.png" id="3_4nl3v"]
+[ext_resource type="Texture2D" uid="uid://cdl7ndyxkkug5" path="res://Animations/Planet 3.png" id="4_4nl3v"]
 [ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://waypoint_marker.tscn" id="4_waekl"]
 [ext_resource type="PackedScene" uid="uid://cuvs10hp7qs3d" path="res://enemy.tscn" id="6_xlsm3"]
+[ext_resource type="PackedScene" uid="uid://bx8h64ye5da0c" path="res://hahaha.tscn" id="8_vvvv7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggs6p"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ayxd"]
-size = Vector2(519, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggs6p"]
 size = Vector2(47493, 631.5)
@@ -18,37 +17,24 @@ size = Vector2(47493, 631.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rddtw"]
 size = Vector2(976, 29196)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w3ei8"]
+radius = 103.6
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dim44"]
-size = Vector2(46.80005, 812.9501)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ayxd"]
+size = Vector2(340.52286, 332.67975)
 
 [node name="Level" type="Node2D" unique_id=574406350]
 script = ExtResource("1_mvtj7")
 
 [node name="Backgrounds" type="Node2D" parent="." unique_id=99285249]
 
-[node name="Background2" type="Sprite2D" parent="Backgrounds" unique_id=393909074]
-position = Vector2(7844.0005, 56.000004)
-scale = Vector2(26.51004, 17.511705)
-texture = ExtResource("1_2xot7")
-
 [node name="Background" type="Sprite2D" parent="Backgrounds" unique_id=656807228]
-position = Vector2(37.000023, 23)
-scale = Vector2(26.51004, 17.511705)
+position = Vector2(13874, -10255)
+scale = Vector2(154.54181, 93.55185)
 texture = ExtResource("1_2xot7")
 
 [node name="Asteriod" type="StaticBody2D" parent="." unique_id=283150803]
 physics_material_override = SubResource("PhysicsMaterial_ggs6p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteriod" unique_id=1825357068]
-position = Vector2(171.5, 0)
-shape = SubResource("RectangleShape2D_4ayxd")
-
-[node name="Sprite2D" type="Sprite2D" parent="Asteriod" unique_id=235210165]
-position = Vector2(182, 0)
-scale = Vector2(3.84375, 1)
-texture = ExtResource("1_1kog2")
 
 [node name="World Borders" type="StaticBody2D" parent="." unique_id=333686309]
 
@@ -61,7 +47,7 @@ position = Vector2(13512.5, -24834.75)
 shape = SubResource("RectangleShape2D_ggs6p")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World Borders" unique_id=325724919]
-position = Vector2(-10448, -10616)
+position = Vector2(-9549, -10514)
 shape = SubResource("RectangleShape2D_rddtw")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="World Borders" unique_id=928378266]
@@ -71,50 +57,212 @@ shape = SubResource("RectangleShape2D_rddtw")
 [node name="Planet" type="Sprite2D" parent="." unique_id=740316866]
 position = Vector2(5319, -2241)
 scale = Vector2(5, 5)
-texture = ExtResource("1_1kog2")
+texture = ExtResource("4_4nl3v")
 
 [node name="WaypointMarker" parent="Planet" unique_id=657557681 instance=ExtResource("4_waekl")]
 screen_margin = 93.64
 
-[node name="Area2D" type="Area2D" parent="Planet" unique_id=1102510528]
-scale = Vector2(18.925, 18.925)
+[node name="Area2D" type="Area2D" parent="Planet" unique_id=774471245]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/Area2D" unique_id=453736016]
-shape = SubResource("CircleShape2D_4ayxd")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/Area2D" unique_id=1705650602]
+shape = SubResource("CircleShape2D_w3ei8")
 
-[node name="Borders" type="StaticBody2D" parent="Planet" unique_id=1978039376]
-position = Vector2(8.495, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/Borders" unique_id=444152380]
-position = Vector2(-433.4948, 32.30005)
-scale = Vector2(0.99999976, 0.99999976)
-shape = SubResource("RectangleShape2D_dim44")
-disabled = true
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Planet/Borders" unique_id=1950844322]
-position = Vector2(387.10498, 42.274994)
-scale = Vector2(0.99999976, 0.99999976)
-shape = SubResource("RectangleShape2D_dim44")
-disabled = true
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Planet/Borders" unique_id=964533030]
-position = Vector2(-27.045044, -375.99997)
-rotation = 1.5707964
-scale = Vector2(0.99999976, 0.99999976)
-shape = SubResource("RectangleShape2D_dim44")
-disabled = true
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Planet/Borders" unique_id=604811880]
-position = Vector2(-16.895044, 438.79996)
-rotation = 1.5707964
-scale = Vector2(0.99999976, 0.99999976)
-shape = SubResource("RectangleShape2D_dim44")
-disabled = true
+[node name="Sprite2D" type="Sprite2D" parent="Planet" unique_id=433041819]
+scale = Vector2(7, 7)
+texture = ExtResource("4_4nl3v")
 
 [node name="Comet" parent="." unique_id=284270887 instance=ExtResource("1_y1jsw")]
-position = Vector2(482, -132)
+position = Vector2(1062, -607)
 
 [node name="CharacterBody2D" parent="." unique_id=543750703 instance=ExtResource("6_xlsm3")]
 position = Vector2(-2000, 0)
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=1264638493]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2" unique_id=1825357068]
+position = Vector2(-100.50002, 53.49999)
+scale = Vector2(1.91, 1.91)
+shape = SubResource("RectangleShape2D_4ayxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2/CollisionShape2D" unique_id=235210165]
+position = Vector2(10.5, 0)
+scale = Vector2(12.015, 12.015)
+texture = ExtResource("3_4nl3v")
+
+[node name="astero" type="CharacterBody2D" parent="CharacterBody2D2" unique_id=1760192452]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2/astero" unique_id=180974288]
+position = Vector2(-100.50002, 53.49999)
+scale = Vector2(1.91, 1.91)
+shape = SubResource("RectangleShape2D_4ayxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2/astero/CollisionShape2D" unique_id=1593992970]
+position = Vector2(10.5, 0)
+scale = Vector2(12.015, 12.015)
+texture = ExtResource("3_4nl3v")
+
+[node name="astero3" type="CharacterBody2D" parent="." unique_id=626362673]
+position = Vector2(10000, -5000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="astero3" unique_id=345501136]
+position = Vector2(-100.50002, 53.49999)
+scale = Vector2(1.91, 1.91)
+shape = SubResource("RectangleShape2D_4ayxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="astero3/CollisionShape2D" unique_id=625201771]
+position = Vector2(10.5, 0)
+scale = Vector2(12.015, 12.015)
+texture = ExtResource("3_4nl3v")
+
+[node name="astero" type="CharacterBody2D" parent="." unique_id=1233691015]
+position = Vector2(10000, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="astero" unique_id=172445413]
+position = Vector2(-100.50002, 53.49999)
+scale = Vector2(1.91, 1.91)
+shape = SubResource("RectangleShape2D_4ayxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="astero/CollisionShape2D" unique_id=1641071184]
+position = Vector2(10.5, 0)
+scale = Vector2(12.015, 12.015)
+texture = ExtResource("3_4nl3v")
+
+[node name="Node2D" parent="." unique_id=1208039807 instance=ExtResource("8_vvvv7")]
+position = Vector2(425, -6161)
+
+[node name="Node2D2" parent="." unique_id=1020938243 instance=ExtResource("8_vvvv7")]
+position = Vector2(-5665, -5063)
+
+[node name="Node2D3" parent="." unique_id=139548808 instance=ExtResource("8_vvvv7")]
+position = Vector2(13971, -7702)
+
+[node name="Node2D4" parent="." unique_id=1725339447 instance=ExtResource("8_vvvv7")]
+position = Vector2(18318, 1379)
+
+[node name="Node2D5" parent="." unique_id=1360232830 instance=ExtResource("8_vvvv7")]
+position = Vector2(9159, 137)
+
+[node name="Node2D6" parent="." unique_id=1438278575 instance=ExtResource("8_vvvv7")]
+position = Vector2(7219, -12203)
+
+[node name="Node2D7" parent="." unique_id=709886826 instance=ExtResource("8_vvvv7")]
+position = Vector2(17464, -12824)
+
+[node name="Node2D8" parent="." unique_id=1286305363 instance=ExtResource("8_vvvv7")]
+position = Vector2(-3647, -13135)
+
+[node name="Node2D9" parent="." unique_id=721472284 instance=ExtResource("8_vvvv7")]
+position = Vector2(1631, -12514)
+
+[node name="Node2D10" parent="." unique_id=1329206760 instance=ExtResource("8_vvvv7")]
+position = Vector2(-5354, -9564)
+
+[node name="Node2D11" parent="." unique_id=325127460 instance=ExtResource("8_vvvv7")]
+position = Vector2(13739, -1570)
+
+[node name="Node2D12" parent="." unique_id=789388549 instance=ExtResource("8_vvvv7")]
+position = Vector2(-8917, -13310)
+
+[node name="Node2D13" parent="." unique_id=1919043757 instance=ExtResource("8_vvvv7")]
+position = Vector2(-6904, -17472)
+
+[node name="Node2D14" parent="." unique_id=2124635343 instance=ExtResource("8_vvvv7")]
+position = Vector2(1230, -16928)
+
+[node name="Node2D15" parent="." unique_id=1557596123 instance=ExtResource("8_vvvv7")]
+position = Vector2(6643, -17282)
+
+[node name="Node2D16" parent="." unique_id=776452246 instance=ExtResource("8_vvvv7")]
+position = Vector2(-1626, -17119)
+
+[node name="Node2D17" parent="." unique_id=537989770 instance=ExtResource("8_vvvv7")]
+position = Vector2(21659, -3690)
+
+[node name="Node2D18" parent="." unique_id=2139261570 instance=ExtResource("8_vvvv7")]
+position = Vector2(22884, -11329)
+
+[node name="Node2D19" parent="." unique_id=689491082 instance=ExtResource("8_vvvv7")]
+position = Vector2(17848, -16903)
+
+[node name="Node2D20" parent="." unique_id=1606417947 instance=ExtResource("8_vvvv7")]
+position = Vector2(-16585, 2147)
+
+[node name="Node2D21" parent="." unique_id=967154896 instance=ExtResource("8_vvvv7")]
+position = Vector2(22293, 5958)
+
+[node name="Node2D22" parent="." unique_id=765886929 instance=ExtResource("8_vvvv7")]
+position = Vector2(-16867, -13940)
+
+[node name="Node2D23" parent="." unique_id=1044787922 instance=ExtResource("8_vvvv7")]
+position = Vector2(-13732, -3734)
+
+[node name="Node2D24" parent="." unique_id=1843423117 instance=ExtResource("8_vvvv7")]
+position = Vector2(6153, -3618)
+
+[node name="Node2D25" parent="." unique_id=1115292415 instance=ExtResource("8_vvvv7")]
+position = Vector2(-9941, -819)
+
+[node name="Node2D26" parent="." unique_id=212591531 instance=ExtResource("8_vvvv7")]
+position = Vector2(-14548, -7641)
+
+[node name="Node2D27" parent="." unique_id=502055234 instance=ExtResource("8_vvvv7")]
+position = Vector2(22741, -15360)
+
+[node name="Node2D28" parent="." unique_id=1584196363 instance=ExtResource("8_vvvv7")]
+position = Vector2(-5898, -1079)
+
+[node name="Node2D29" parent="." unique_id=763069103 instance=ExtResource("8_vvvv7")]
+position = Vector2(-10555, -6590)
+
+[node name="Node2D30" parent="." unique_id=326476297 instance=ExtResource("8_vvvv7")]
+position = Vector2(6520, 3345)
+
+[node name="Node2D31" parent="." unique_id=1202587980 instance=ExtResource("8_vvvv7")]
+position = Vector2(12379, 4738)
+
+[node name="Node2D32" parent="." unique_id=284786628 instance=ExtResource("8_vvvv7")]
+position = Vector2(10005, -3536)
+
+[node name="Node2D33" parent="." unique_id=1310994536 instance=ExtResource("8_vvvv7")]
+position = Vector2(5387, -7129)
+
+[node name="Node2D34" parent="." unique_id=1061770498 instance=ExtResource("8_vvvv7")]
+position = Vector2(9171, -8925)
+
+[node name="Node2D35" parent="." unique_id=704757609 instance=ExtResource("8_vvvv7")]
+position = Vector2(22577, 761)
+
+[node name="Node2D36" parent="." unique_id=800407429 instance=ExtResource("8_vvvv7")]
+position = Vector2(17959, -8027)
+
+[node name="Node2D37" parent="." unique_id=642541355 instance=ExtResource("8_vvvv7")]
+position = Vector2(16099, -4242)
+
+[node name="Node2D38" parent="." unique_id=765999188 instance=ExtResource("8_vvvv7")]
+position = Vector2(11027, -14526)
+
+[node name="Node2D39" parent="." unique_id=880182078 instance=ExtResource("8_vvvv7")]
+position = Vector2(-13091, 1574)
+
+[node name="Node2D40" parent="." unique_id=438248744 instance=ExtResource("8_vvvv7")]
+position = Vector2(-13732, -11575)
+
+[node name="Node2D41" parent="." unique_id=432769134 instance=ExtResource("8_vvvv7")]
+position = Vector2(-13091, -15296)
+
+[node name="Node2D42" parent="." unique_id=1818282761 instance=ExtResource("8_vvvv7")]
+position = Vector2(-904, -9330)
+
+[node name="Node2D43" parent="." unique_id=485795525 instance=ExtResource("8_vvvv7")]
+position = Vector2(5383, 6706)
+
+[node name="Node2D44" parent="." unique_id=864996049 instance=ExtResource("8_vvvv7")]
+position = Vector2(-14951, -17541)
+
+[node name="Node2D45" parent="." unique_id=1932919527 instance=ExtResource("8_vvvv7")]
+position = Vector2(13864, -17221)
+
+[node name="Node2D46" parent="." unique_id=1767937161 instance=ExtResource("8_vvvv7")]
+position = Vector2(-16793, -2009)
 
 [connection signal="body_entered" from="Planet/Area2D" to="." method="_on_area_2d_body_entered"]

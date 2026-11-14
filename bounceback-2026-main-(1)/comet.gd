@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var bounce_speed_retention = 1.2
 @export var stun_duration = 0.5
 @export var max_hp: int = 3
+var planet_counter = 0
+var bounce_count = 0
 
 @export var bounce_lock_duration = 0.2
 var hp: int = max_hp
@@ -31,10 +33,13 @@ func _process(delta: float) -> void:
 		rotation = lerp_angle(rotation, velocity.angle(), 20 * delta)
 
 func _physics_process(delta: float) -> void:
+	$Camera2D/Control/Label.text = "Planet Counter " + str(planet_counter) 
+	$Camera2D/Control/Label2.text = "Hit Points " + str(hp)
 	if Input.is_action_just_pressed("dash") and can_dash:
 		dashing = true
 		dash_direction = (get_global_mouse_position() - global_position).normalized()
 		rotation = dash_direction.angle()
+		$AnimatedSprite2D/Sprite2D.visible = true
 		$dash_timer.start()
 
 	if can_move:
@@ -116,19 +121,23 @@ func _kill_enemy(enemy: Node) -> void:
 		enemy.die()
 	else:
 		enemy.queue_free()
-
+func addplanet(amount: int) -> void:
+	planet_counter += amount
+	if planet_counter == 10:
+		print("you win")
 
 func take_damage(amount: int) -> void:
 	hp -= amount
 	print("HP: ", hp)
 
 	if hp <= 0:
-		print("GAME OVER")
+		print("game over!")
 		get_tree().reload_current_scene()
 
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false
+	$AnimatedSprite2D/Sprite2D.visible = false
 
 
 func hazard_kill() -> void:
