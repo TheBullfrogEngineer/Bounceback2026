@@ -7,6 +7,7 @@
 radius = 51.89
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
+radius = 6.544826
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qi2p4"]
 atlas = ExtResource("2_4gyqm")
@@ -231,15 +232,14 @@ scale = Vector2(5.545, 5.545)
 script = ExtResource("1_4gyqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1080292810]
-position = Vector2(0.090167895, 1.3525704)
-scale = Vector2(1.0000001, 1.0000001)
+scale = Vector2(0.865, 0.865)
 shape = SubResource("CircleShape2D_4gyqm")
 disabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=728270176]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1176811100]
-scale = Vector2(8.775, 8.775)
+scale = Vector2(6.835, 6.835)
 shape = SubResource("CircleShape2D_4ayxd")
 
 [node name="Timer" type="Timer" parent="." unique_id=1885699632]
@@ -248,7 +248,7 @@ shape = SubResource("CircleShape2D_4ayxd")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_cylpe")
 animation = &"idle"
-frame_progress = 0.19962247
+frame_progress = 0.7550815
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

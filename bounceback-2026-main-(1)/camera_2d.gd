@@ -1,0 +1,14 @@
+extends Camera2D
+
+@export var max_shake: float = 75.0
+@export var shake_fade: float = 10.0
+var _shake_strength: float = 0
+func _ready():
+	add_to_group("camera")
+
+func trigger_shake(strength: float = max_shake) -> void:
+	_shake_strength = max(_shake_strength, strength)
+func _process(delta) -> void:
+	if _shake_strength > 0:
+		_shake_strength = lerp(_shake_strength, 0.0, shake_fade * delta)
+		offset = Vector2(randf_range(-_shake_strength, _shake_strength), randf_range(-_shake_strength, _shake_strength))

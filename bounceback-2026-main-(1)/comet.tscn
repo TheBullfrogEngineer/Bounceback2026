@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://c2wyetr0iaqm1" path="res://Animations/sprite-animation-64x64-8f-sheet.png" id="2_imve7"]
 [ext_resource type="PackedScene" uid="uid://cuvs10hp7qs3d" path="res://enemy.tscn" id="2_k8xgu"]
 [ext_resource type="Texture2D" uid="uid://csfca8b4xw50t" path="res://Animations/DASH.png" id="5_k3nfo"]
+[ext_resource type="Script" uid="uid://b58q2ufa1fq01" path="res://camera_2d.gd" id="6_y71x0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
-radius = 85.37564
+radius = 117.426575
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0b5vm"]
 atlas = ExtResource("2_3s670")
@@ -169,6 +170,7 @@ texture = ExtResource("5_k3nfo")
 zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+script = ExtResource("6_y71x0")
 
 [node name="Control" type="Control" parent="Camera2D" unique_id=607703610]
 layout_mode = 3

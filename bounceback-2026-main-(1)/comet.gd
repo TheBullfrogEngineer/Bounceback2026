@@ -4,12 +4,13 @@ extends CharacterBody2D
 @export var speed = 750.0
 @export var dash_speed = 1750
 @export var friction = 500
-@export var bounce_speed_retention = 1.2
+@export var bounce_speed_retention = 1.5
 @export var stun_duration = 0.5
 @export var max_hp: int = 3
 var planet_counter = 0
 var bounce_count = 0
-
+var score = 0 
+var best_score = 0
 @export var bounce_lock_duration = 0.2
 var hp: int = max_hp
 var dashing = false
@@ -66,6 +67,7 @@ func _physics_process(delta: float) -> void:
 			var collider := collision.get_collider()
 			if collider and collider.is_in_group("enemy"):
 				_kill_enemy(collider)
+	
 			else:
 				velocity = velocity.bounce(collision.get_normal()) * bounce_speed_retention
 				dash_direction = velocity.normalized()
@@ -97,17 +99,20 @@ func _handle_wall_collisions() -> void:
 
 		if collider and collider.is_in_group("enemy"):
 			if dashing:
+				$Camera2D.trigger_shake()
 				_kill_enemy(collider)
 			elif not dashing:
 				take_damage(1)
 			continue
 
 		if dashing:
+			$Camera2D.trigger_shake()
 			velocity = velocity.bounce(normal) * bounce_speed_retention
 			dash_direction = velocity.normalized()
 			rotation = dash_direction.angle()
 
 		if collider and collider.is_in_group("enemy"):
+			$Camera2D.trigger_shake()
 			_kill_enemy(collider)
 			continue
 
@@ -118,16 +123,20 @@ func _handle_wall_collisions() -> void:
 
 func _kill_enemy(enemy: Node) -> void:
 	if enemy.has_method("die"):
+		$Camera2D.trigger_shake()
 		enemy.die()
 	else:
+		$Camera2D.trigger_shake()
 		enemy.queue_free()
 func addplanet(amount: int) -> void:
 	planet_counter += amount
+	$Camera2D.trigger_shake()
 	if planet_counter == 10:
 		print("you win")
 
 func take_damage(amount: int) -> void:
 	hp -= amount
+	$Camera2D.trigger_shake()
 	print("HP: ", hp)
 
 	if hp <= 0:
