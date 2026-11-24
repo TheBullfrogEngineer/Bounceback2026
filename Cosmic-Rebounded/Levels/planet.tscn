@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c5s0obiq85enf"]
+
+[ext_resource type="Texture2D" uid="uid://dm0ccjvht5pxw" path="res://Assets/Textures/Planets and Stuff/Planet 1.png" id="1_x6fl6"]
+[ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://waypoint_marker.tscn" id="2_7664v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
+radius = 80.4
+
+[node name="Planet" type="Node2D" unique_id=1725034579]
+scale = Vector2(5, 5)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1381683746]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1377639329]
+shape = SubResource("CircleShape2D_4ayxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1180027157]
+scale = Vector2(4.665, 4.665)
+texture = ExtResource("1_x6fl6")
+
+[node name="WaypointMarker" parent="." unique_id=657557681 instance=ExtResource("2_7664v")]
+scale = Vector2(5, 5)
+screen_margin = 40.0

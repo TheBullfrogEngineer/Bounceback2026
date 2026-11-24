@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bonu7oi4ft8q4"]
+
+[ext_resource type="Script" uid="uid://dhujgshj4oobi" path="res://Levels/test_level.gd" id="1_wenv2"]
+[ext_resource type="PackedScene" uid="uid://crnq3mfkg43su" path="res://Systems/Cursor/cursor.tscn" id="2_w8qko"]
+[ext_resource type="Texture2D" uid="uid://b0s0rnfpvp1kk" path="res://1hleft.png" id="8_cxxvu"]
+[ext_resource type="PackedScene" uid="uid://clu42du2dffit" path="res://Entities/triangle.tscn" id="9_8pteh"]
+[ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://waypoint_marker.tscn" id="9_a5le3"]
+[ext_resource type="AudioStream" uid="uid://cyurlryw7rboc" path="res://Assets/Audio/BGM/bgm_retro.mp3" id="9_cxxvu"]
+[ext_resource type="PackedScene" uid="uid://cfab1qxv5l0xn" path="res://Entities/melee_enemy.tscn" id="11_8lo6y"]
+[ext_resource type="PackedScene" uid="uid://4n68niwvspg0" path="res://Entities/tutorial_enemy.tscn" id="12_n52as"]
+[ext_resource type="Texture2D" uid="uid://bn1525ulmm017" path="res://Assets/Textures/icon.svg" id="14_s4vsl"]
+[ext_resource type="PackedScene" uid="uid://dalm655w7fluw" path="res://Spawners/spawner.tscn" id="14_wenv2"]
+[ext_resource type="AudioStream" uid="uid://p6l7s1tf7suy" path="res://Assets/Audio/SFX/Abilities/sfx_super_mode_enter.wav" id="18_wq5b5"]
+[ext_resource type="PackedScene" uid="uid://dqti32tgx54ub" path="res://UI/Menu/pause_menu.tscn" id="21_pause"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3ksry"]
+resource_local_to_scene = true
+vertices = PackedVector2Array(1293.1172, -901.3672, 1424.2891, 703.27344, 1149.2109, 85.0625, 1148.8906, -96.0625, -1159.1406, 751.4531, 329.09375, 85.0625, -1404.2813, -787.39844, 328.77344, -96.0625)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 0, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1183.0214, 779.968, 1454.6918, 730.7808, 1318.898, -930.54095, -1436.9532, -814.09784)])
+source_geometry_mode = 2
+agent_radius = 28.06
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82po7"]
+size = Vector2(764, 125)
+
+[node name="TestLevel" type="Node2D" unique_id=242093086]
+script = ExtResource("1_wenv2")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1596367850]
+position = Vector2(-11.000004, 4)
+skew = 0.0017453292
+navigation_polygon = SubResource("NavigationPolygon_3ksry")
+
+[node name="cursor" parent="." unique_id=1436806802 instance=ExtResource("2_w8qko")]
+
+[node name="Entities" type="Node" parent="." unique_id=1455784909]
+
+[node name="Triangle" parent="Entities" unique_id=669404060 instance=ExtResource("9_8pteh")]
+collision_mask = 255
+
+[node name="TutorialEnemy" parent="Entities" unique_id=1732316148 instance=ExtResource("12_n52as")]
+position = Vector2(-516.99994, -292.99997)
+
+[node name="Enemy" parent="Entities" unique_id=774776700 instance=ExtResource("11_8lo6y")]
+scale = Vector2(1, 1)
+
+[node name="Obstacles" type="Node" parent="." unique_id=325095098]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Obstacles" unique_id=184795921 groups=["navigation_polygon_source_geometry_group"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticBody2D" unique_id=1010294604 groups=["navigation_polygon_source_geometry_group"]]
+position = Vector2(731, 4)
+scale = Vector2(6.0625, 1)
+texture = ExtResource("14_s4vsl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticBody2D" unique_id=1628912657 groups=["navigation_polygon_source_geometry_group"]]
+position = Vector2(728, -1.5)
+shape = SubResource("RectangleShape2D_82po7")
+
+[node name="Planet" type="Sprite2D" parent="Obstacles" unique_id=1526391327]
+position = Vector2(-1251, -632)
+scale = Vector2(2, 2)
+texture = ExtResource("8_cxxvu")
+
+[node name="WaypointMarker" parent="Obstacles/Planet" unique_id=657557681 instance=ExtResource("9_a5le3")]
+screen_margin = 65.0
+
+[node name="LevelParts" type="Node" parent="." unique_id=228985078]
+
+[node name="Music" type="AudioStreamPlayer" parent="LevelParts" unique_id=1164203136]
+stream = ExtResource("9_cxxvu")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"
+
+[node name="spawner" parent="LevelParts" unique_id=1341342553 instance=ExtResource("14_wenv2")]
+
+[node name="PauseMenu" parent="." unique_id=1801261525 instance=ExtResource("21_pause")]
+visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1175144559]
+stream = ExtResource("18_wq5b5")
