@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://ch4r0j1vku37o"]
 
+[ext_resource type="Shader" uid="uid://bcbheywy8fm8p" path="res://Levels/lobby.gdshader" id="1_r50g8"]
 [ext_resource type="PackedScene" uid="uid://clu42du2dffit" path="res://Entities/triangle.tscn" id="1_vit0s"]
 [ext_resource type="Texture2D" uid="uid://btrpjnha2krd0" path="res://empty.png" id="2_3aojn"]
-[ext_resource type="Texture2D" uid="uid://wadgyvf51j1c" path="res://Screenshot 2026-09-27 173900.png" id="2_f5k8n"]
 [ext_resource type="Texture2D" uid="uid://dm0ccjvht5pxw" path="res://Assets/Textures/Planets and Stuff/Planet 1.png" id="2_j83j6"]
+[ext_resource type="Texture2D" uid="uid://bde63rs73cyux" path="res://Assets/Textures/Planets and Stuff/space_background_seamless_4x.png" id="2_r50g8"]
 [ext_resource type="Script" uid="uid://dgfehlrrbb2on" path="res://Levels/pyrax.gd" id="2_v81qt"]
 [ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://waypoint_marker.tscn" id="3_v81qt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xng1g"]
+shader = ExtResource("1_r50g8")
+shader_parameter/SPEED = 0.01
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
 radius = 80.4
@@ -15,9 +20,14 @@ size = Vector2(325, 325)
 
 [node name="Map" type="Node2D" unique_id=2120505794]
 
-[node name="TempBackground" type="Sprite2D" parent="." unique_id=1956959031]
-scale = Vector2(37.505, 37.505)
-texture = ExtResource("2_f5k8n")
+[node name="TextureRect" type="TextureRect" parent="." unique_id=174988442]
+material = SubResource("ShaderMaterial_xng1g")
+offset_left = -15141.0
+offset_top = -15286.0
+offset_right = 15209.0
+offset_bottom = 15258.0
+texture = ExtResource("2_r50g8")
+stretch_mode = 1
 
 [node name="Pyrax" type="Node2D" parent="." unique_id=1725034579]
 position = Vector2(3191, -10163)
