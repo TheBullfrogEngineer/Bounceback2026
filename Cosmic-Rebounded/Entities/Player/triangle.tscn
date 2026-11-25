@@ -200,6 +200,10 @@ offset_right = 255.0
 offset_bottom = 19.0
 scale = Vector2(3, 3)
 
+[node name="invincibility_timer" type="Timer" parent="." unique_id=1647260161]
+wait_time = 0.4
+
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="Enemy Spawn Timer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="invincibility_timer" to="." method="_on_invincibility_timer_timeout"]

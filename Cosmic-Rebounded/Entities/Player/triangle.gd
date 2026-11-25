@@ -24,6 +24,8 @@ var dash_direction: Vector2 = Vector2.RIGHT
 var can_move = true
 var can_dash = true
 
+var invincible = false
+
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var bounce_sound: AudioStreamPlayer2D = $BounceSound
 const STUN_SOUNDS := [
@@ -128,13 +130,15 @@ func _kill_enemy(enemy: Node) -> void:
 		enemy.queue_free()
 
 func take_damage(amount: int) -> void:
-
-	camera.trigger_shake()
-	Sfx.play(STUN_SOUNDS.pick_random())
-	hp -= amount
-	if hp <= -1:
-		get_tree().paused = true
-	healthbar.health = hp
+	if invincible == false:
+		invincible = true
+		$invincibility_timer.start()
+		camera.trigger_shake()
+		Sfx.play(STUN_SOUNDS.pick_random())
+		hp -= amount
+		if hp <= -1:
+			get_tree().paused = true
+		healthbar.health = hp
 	
 
 func apply_vulnerable_knockback(away_direction: Vector2) -> void:
@@ -179,3 +183,7 @@ func _on_enemy_spawn_timer_timeout() -> void:
 	var enemy = enemy_scene.instantiate()
 	enemy.global_position = spawn_location.global_position
 	get_tree().current_scene.add_child(enemy)
+
+
+func _on_invincibility_timer_timeout() -> void:
+	invincible = false
