@@ -1,3 +1,4 @@
+
 extends CharacterBody2D
 
 @export var attack_cooldown: float = 0.5
@@ -33,6 +34,7 @@ extends CharacterBody2D
 
 enum AttackType { HOMING_MISSILES, LASER, SPAWN }
 enum State { IDLE, ATTACKING }
+
 var state: State = State.IDLE
 
 var player: Node2D
@@ -42,13 +44,19 @@ var random_missile_loop_active: bool = false
 var is_vulnerable: bool = false
 var vulnerable_timer: float = 0.0
 
-@onready var sprite: Sprite2D = $Sprite2D
+# UPDATED: AnimatedSprite2D instead of Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
 	attack_timer = attack_cooldown
+
+	# Play boss animation
+	sprite.play("default")
+
 	if random_missile_loop:
 		_start_random_missile_loop()
+
 	add_to_group("boss")
 
 
@@ -65,16 +73,27 @@ func _physics_process(delta: float) -> void:
 		if attack_timer <= 0.0:
 			_start_random_attack()
 
+
 func _start_random_attack() -> void:
 	state = State.ATTACKING
-	var available: Array = [AttackType.HOMING_MISSILES, AttackType.LASER]
+
+	var available: Array = [
+		AttackType.HOMING_MISSILES,
+		AttackType.LASER
+	]
+
 	if enemy_scenes.size() > 0:
 		available.append(AttackType.SPAWN)
+
 	var attack: AttackType = available.pick_random()
+
 	match attack:
-		AttackType.HOMING_MISSILES: _do_homing_missile_attack()
-		AttackType.LASER:           _do_laser_attack()
-		AttackType.SPAWN:           _do_spawn_attack()
+		AttackType.HOMING_MISSILES:
+			_do_homing_missile_attack()
+		AttackType.LASER:
+			_do_laser_attack()
+		AttackType.SPAWN:
+			_do_spawn_attack()
 
 
 func _end_attack() -> void:
@@ -86,15 +105,18 @@ func _do_homing_missile_attack() -> void:
 	for i in missile_burst_count:
 		await get_tree().create_timer(missile_burst_interval).timeout
 		_fire_homing_missile()
+
 	_end_attack()
 
 
 func _fire_homing_missile() -> void:
 	if not missile_scene:
 		return
+
 	var missile: Node2D = missile_scene.instantiate()
 	get_tree().current_scene.add_child(missile)
 	missile.global_position = global_position
+
 	if missile.has_method("set_target"):
 		missile.set_target(player)
 
@@ -113,11 +135,14 @@ func _random_missile_loop_tick() -> void:
 	else:
 		for i in random_missile_count:
 			await get_tree().create_timer(random_missile_interval).timeout
+
 			if not is_inside_tree():
 				return
+
 			_fire_random_missile()
 
 	await get_tree().create_timer(attack_cooldown).timeout
+
 	if is_inside_tree():
 		_random_missile_loop_tick()
 
@@ -125,15 +150,20 @@ func _random_missile_loop_tick() -> void:
 func _fire_random_missile() -> void:
 	if not missile_scene:
 		return
+
 	var missile: Node2D = missile_scene.instantiate()
 	get_tree().current_scene.add_child(missile)
 	missile.global_position = global_position
+
 	var random_angle: float = randf() * TAU
 	var random_dir: Vector2 = Vector2.from_angle(random_angle)
+
 	missile.rotation = random_angle
 	missile.set("move_direction", random_dir)
+
 	if missile.has_method("set_target"):
 		missile.set_target(null)
+
 	_tint_missile(missile, random_missile_color)
 	_exclude_enemies_from_missile(missile)
 
@@ -149,17 +179,22 @@ func _fire_ring_missiles() -> void:
 	for i in ring_missile_count:
 		var angle: float = step * i
 		var angle_diff: float = abs(wrapf(angle - gap_start, -PI, PI))
+
 		if angle_diff < gap_half:
 			continue
 
 		var missile: Node2D = missile_scene.instantiate()
 		get_tree().current_scene.add_child(missile)
 		missile.global_position = global_position
+
 		var dir: Vector2 = Vector2.from_angle(angle)
+
 		missile.rotation = angle
 		missile.set("move_direction", dir)
+
 		if missile.has_method("set_target"):
 			missile.set_target(null)
+
 		_tint_missile(missile, Color(1.0, 0.3, 0.0))
 		_exclude_enemies_from_missile(missile)
 
@@ -182,27 +217,40 @@ func _do_laser_attack() -> void:
 		_end_attack()
 		return
 
-	var base_direction: Vector2 = (player.global_position - global_position).normalized()
+	var base_direction: Vector2 = (
+		player.global_position - global_position
+	).normalized()
+
 	var base_angle: float = base_direction.angle()
 
 	var angles: Array = []
+
 	if laser_count == 1:
 		angles.append(base_angle)
 	else:
 		var spread: float = deg_to_rad(laser_spread_degrees)
+
 		for i in laser_count:
 			var t: float = float(i) / float(laser_count - 1)
-			angles.append(base_angle + lerp(-spread, spread, t) + randf_range(-deg_to_rad(8), deg_to_rad(8)))
+
+			angles.append(
+				base_angle
+				+ lerp(-spread, spread, t)
+				+ randf_range(-deg_to_rad(8), deg_to_rad(8))
+			)
 
 	for angle in angles:
 		var laser: Node2D = laser_scene.instantiate()
 		get_tree().current_scene.add_child(laser)
+
 		laser.telegraph_duration = laser_telegraph_duration
 		laser.active_duration = laser_active_duration
 		laser.length = laser_length
 		laser.width = laser_width
+
 		laser.setup(self, Vector2.from_angle(angle), player)
 		laser.fire()
+
 		await get_tree().create_timer(laser_stagger).timeout
 
 	_end_attack()
@@ -220,15 +268,25 @@ func _do_spawn_attack() -> void:
 
 	for i in spawn_count:
 		var scene: PackedScene = enemy_scenes.pick_random()
+
 		if not scene:
 			continue
+
 		var enemy: Node2D = scene.instantiate()
 		get_tree().current_scene.add_child(enemy)
+
 		var angle: float = randf() * TAU
-		enemy.global_position = global_position + Vector2.from_angle(angle) * enemy_spawn_radius
+
+		enemy.global_position = (
+			global_position
+			+ Vector2.from_angle(angle) * enemy_spawn_radius
+		)
+
 		add_collision_exception_with(enemy)
 		enemy.add_collision_exception_with(self)
+
 	_end_attack()
+
 
 func die() -> void:
 	random_missile_loop_active = false
@@ -238,5 +296,6 @@ func die() -> void:
 
 func _shake_camera_hard() -> void:
 	var camera := get_viewport().get_camera_2d()
+
 	if camera and camera.has_method("trigger_shake"):
 		camera.trigger_shake(death_shake_strength)
