@@ -11,7 +11,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tkwc8"]
 shader = ExtResource("1_8x16s")
-shader_parameter/SPEED = 0.8
+shader_parameter/SPEED = 0.08
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ypn17"]
 load_path = "res://.godot/imported/space_background_seamless_4x.png-a543cb08039fdf86ef786a9987c363c6.ctex"

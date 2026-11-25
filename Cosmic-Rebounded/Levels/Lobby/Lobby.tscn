@@ -11,7 +11,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xng1g"]
 shader = ExtResource("1_jhmw5")
-shader_parameter/SPEED = 0.15
+shader_parameter/SPEED = 0.025
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
 radius = 80.4
