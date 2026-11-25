@@ -9,11 +9,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	pass
+	$WaypointMarker.visible = Levelmanager.pyrax
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name != "Triangle":
 		return
-	else:
+	elif Levelmanager.pyrax == true:
 		get_tree().change_scene_to_file.call_deferred("res://Levels/Pyrax Level/pyrax.tscn")

@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://ch4r0j1vku37o"]
 
 [ext_resource type="Shader" uid="uid://bcbheywy8fm8p" path="res://Levels/Lobby/lobby.gdshader" id="1_jhmw5"]
+[ext_resource type="Script" uid="uid://crn5rv6bwd4uy" path="res://Levels/Lobby/levelmanager.gd" id="1_r3v2t"]
 [ext_resource type="Texture2D" uid="uid://bde63rs73cyux" path="res://Assets/Textures/Planets and Stuff/space_background_seamless_4x.png" id="2_uo056"]
 [ext_resource type="Script" uid="uid://dgfehlrrbb2on" path="res://Levels/Pyrax Level/pyrax.gd" id="3_uo056"]
 [ext_resource type="Texture2D" uid="uid://2q7wwu40r3k8" path="res://Assets/Textures/Planets and Stuff/Pyrax.png" id="4_xdscm"]
 [ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://UI/HUD/waypoint_marker.tscn" id="5_5e7b7"]
 [ext_resource type="PackedScene" uid="uid://clu42du2dffit" path="res://Entities/Player/triangle.tscn" id="6_xxqy0"]
 [ext_resource type="Texture2D" uid="uid://btrpjnha2krd0" path="res://empty.png" id="7_hrp2l"]
-[ext_resource type="PackedScene" uid="uid://dqti32tgx54ub" path="res://UI/Menu/pause_menu.tscn" id="8_r3v2t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xng1g"]
 shader = ExtResource("1_jhmw5")
@@ -84,6 +84,7 @@ animations = [{
 size = Vector2(325, 325)
 
 [node name="Map" type="Node2D" unique_id=2120505794]
+script = ExtResource("1_r3v2t")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=174988442]
 material = SubResource("ShaderMaterial_xng1g")
@@ -105,7 +106,7 @@ script = ExtResource("3_uo056")
 shape = SubResource("CircleShape2D_4ayxd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pyrax/Area2D" unique_id=402775638]
-position = Vector2(1.3999779, 2.000084)
+position = Vector2(1.4000244, 2)
 scale = Vector2(1.1302847, 1.1302847)
 sprite_frames = SubResource("SpriteFrames_77k6c")
 frame_progress = 0.32209024
@@ -209,7 +210,5 @@ texture = ExtResource("7_hrp2l")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right" unique_id=935595959]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_4ayxd")
-
-[node name="PauseMenu" parent="." unique_id=1870181315 instance=ExtResource("8_r3v2t")]
 
 [connection signal="body_entered" from="Pyrax/Area2D" to="Pyrax" method="_on_area_2d_body_entered"]

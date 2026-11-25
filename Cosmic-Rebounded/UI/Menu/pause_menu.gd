@@ -30,20 +30,9 @@ func pause() -> void:
 	is_paused = true
 	visible = true
 	get_tree().paused = true
-	set_game_cursor_visible(false)
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 
 
 func resume() -> void:
 	is_paused = false
 	visible = false
 	get_tree().paused = false
-	set_game_cursor_visible(true)
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-
-
-# The in-game cursor is a world sprite that freezes while paused, so swap it
-# for the OS cursor instead of leaving a stuck sprite behind the menu.
-func set_game_cursor_visible(is_visible: bool) -> void:
-	for cursor in get_tree().get_nodes_in_group("game_cursor"):
-		cursor.visible = is_visible

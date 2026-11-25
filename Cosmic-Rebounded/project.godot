@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://bscu38jhenw20"
 [autoload]
 
 Sfx="*res://Systems/Audio/sfx.gd"
+Levelmanager="*uid://crn5rv6bwd4uy"
 
 [display]
 

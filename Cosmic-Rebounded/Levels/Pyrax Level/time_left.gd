@@ -6,6 +6,7 @@ var time_left: float = 30.0
 var expired: bool = false
 
 func _ready() -> void:
+	Levelmanager.toggle_pyrax()
 	add_to_group("time_left")
 
 func time_left_to_live():
@@ -26,5 +27,4 @@ func _restart_level() -> void:
 	if expired:
 		return
 	expired = true
-	#Replace this with cutscene
-	get_tree().paused = true
+	get_tree().change_scene_to_file("res://Levels/Lobby/Lobby.tscn")
