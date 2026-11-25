@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://drytfobpdkmi3"]
+
+[ext_resource type="Script" uid="uid://cyrfmcleqow38" path="res://Entities/Boss/missile.gd" id="1_85r65"]
+[ext_resource type="Texture2D" uid="uid://ya73f3d21tgm" path="res://Assets/Textures/player/bullet.png" id="2_1hifk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82po7"]
+size = Vector2(30, 17)
+
+[node name="Missile" type="Area2D" unique_id=803181640]
+script = ExtResource("1_85r65")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1334778292]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_82po7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=281377740]
+position = Vector2(-0.50000095, -0.5000007)
+scale = Vector2(2, 2)
+texture = ExtResource("2_1hifk")
