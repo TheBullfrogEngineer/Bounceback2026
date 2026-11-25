@@ -3,6 +3,9 @@ extends Sprite2D
 @export var on_screen_offset: Vector2 = Vector2(0.5, -5.0)
 @export var screen_margin: float = 4.0
 @export var smoothing_speed: float = 8.0
+@export var player: CharacterBody2D
+@export var planet: Node2D
+
 
 var camera_node: Camera2D
 
@@ -38,3 +41,20 @@ func _process(delta: float) -> void:
 	
 	global_position = lerp(global_position, target_display_position, delta * smoothing_speed)
 	rotation = lerp(rotation, target_display_rotation, delta * smoothing_speed)
+	
+	var distance = planet.global_position.distance_to(player.global_position)
+	if distance > 20000:
+		scale = lerp(scale, Vector2(2, 2), delta * 1.0)
+	elif distance <= 20000 and distance > 15000:
+		scale = lerp(scale, Vector2(3, 3), delta * 1.0)
+	elif distance <= 15000 and distance > 10000:
+		scale = lerp(scale, Vector2(5, 5), delta * 1.0)
+	elif distance <= 10000 and distance > 7500:
+		scale = lerp(scale, Vector2(9, 9), delta * 1.0)
+	elif distance <= 7500 and distance > 5000:
+		scale = lerp(scale, Vector2(11, 11), delta * 1.0)
+	elif distance <= 5000 and distance > 2500:
+		scale = lerp(scale, Vector2(13, 13), delta * 1.0)
+	else:
+		scale = lerp(scale, Vector2(15, 15), delta * 1.0)
+		

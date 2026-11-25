@@ -110,9 +110,11 @@ scale = Vector2(1.1302847, 1.1302847)
 sprite_frames = SubResource("SpriteFrames_77k6c")
 frame_progress = 0.32209024
 
-[node name="WaypointMarker" parent="Pyrax" unique_id=657557681 instance=ExtResource("5_5e7b7")]
+[node name="WaypointMarker" parent="Pyrax" unique_id=657557681 node_paths=PackedStringArray("player", "planet") instance=ExtResource("5_5e7b7")]
 scale = Vector2(5, 5)
 screen_margin = 40.0
+player = NodePath("../../Triangle")
+planet = NodePath("..")
 
 [node name="Cryax" type="Node2D" parent="." unique_id=662875486]
 position = Vector2(-8000, 8000)
@@ -129,9 +131,11 @@ scale = Vector2(1.1302847, 1.1302847)
 sprite_frames = SubResource("SpriteFrames_77k6c")
 frame_progress = 0.32209024
 
-[node name="WaypointMarker" parent="Cryax" unique_id=803858590 instance=ExtResource("5_5e7b7")]
+[node name="WaypointMarker" parent="Cryax" unique_id=803858590 node_paths=PackedStringArray("player", "planet") instance=ExtResource("5_5e7b7")]
 scale = Vector2(5, 5)
 screen_margin = 40.0
+player = NodePath("../../Triangle")
+planet = NodePath("..")
 
 [node name="Aquarius" type="Node2D" parent="." unique_id=1134186191]
 position = Vector2(9000, 14000)
@@ -148,9 +152,11 @@ scale = Vector2(1.1302847, 1.1302847)
 sprite_frames = SubResource("SpriteFrames_77k6c")
 frame_progress = 0.32209024
 
-[node name="WaypointMarker" parent="Aquarius" unique_id=1125288020 instance=ExtResource("5_5e7b7")]
+[node name="WaypointMarker" parent="Aquarius" unique_id=1125288020 node_paths=PackedStringArray("player", "planet") instance=ExtResource("5_5e7b7")]
 scale = Vector2(5, 5)
 screen_margin = 40.0
+player = NodePath("../../Triangle")
+planet = NodePath("..")
 
 [node name="Triangle" parent="." unique_id=669404060 instance=ExtResource("6_xxqy0")]
 
