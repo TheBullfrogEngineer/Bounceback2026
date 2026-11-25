@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://btrpjnha2krd0" path="res://empty.png" id="5_tqanj"]
 [ext_resource type="Script" uid="uid://u6gq3mopm0mq" path="res://Levels/Template Parts/camera_shake.gd" id="6_cudl1"]
 [ext_resource type="Script" uid="uid://opjxvpnarp6u" path="res://Levels/Pyrax Level/time_left.gd" id="7_5vdgb"]
-[ext_resource type="PackedScene" uid="uid://dl4xya54lyqu1" path="res://Entities/Player/leveltriangle.tscn" id="8_ownpu"]
-[ext_resource type="PackedScene" uid="uid://dqti32tgx54ub" path="res://UI/Menu/pause_menu.tscn" id="9_a4g3s"]
+[ext_resource type="PackedScene" uid="uid://clu42du2dffit" path="res://Entities/Player/triangle.tscn" id="8_8x16s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tkwc8"]
 shader = ExtResource("1_8x16s")
@@ -141,8 +140,5 @@ script = ExtResource("7_5vdgb")
 offset_right = 40.0
 offset_bottom = 16.0
 
-[node name="Triangle" parent="." unique_id=669404060 node_paths=PackedStringArray("camera") instance=ExtResource("8_ownpu")]
-position = Vector2(1000, 0)
+[node name="Triangle" parent="." unique_id=669404060 node_paths=PackedStringArray("camera") instance=ExtResource("8_8x16s")]
 camera = NodePath("../Camera2D2")
-
-[node name="PauseMenu" parent="." unique_id=1870181315 instance=ExtResource("9_a4g3s")]

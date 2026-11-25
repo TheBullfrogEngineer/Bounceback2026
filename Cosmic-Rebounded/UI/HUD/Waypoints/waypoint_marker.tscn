@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d263dfso6pxwe"]
 
 [ext_resource type="Texture2D" uid="uid://hvvlp0epuq0i" path="res://Assets/Textures/ui/art_atlas.png" id="1_0k0rx"]
-[ext_resource type="Script" uid="uid://dks4n3lxqnquy" path="res://UI/HUD/waypoint_marker.gd" id="2_0k0rx"]
+[ext_resource type="Script" uid="uid://dks4n3lxqnquy" path="res://UI/HUD/Waypoints/waypoint_marker.gd" id="2_0k0rx"]
 
 [node name="WaypointMarker" type="Sprite2D" unique_id=657557681]
 z_index = 71

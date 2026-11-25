@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bde63rs73cyux" path="res://Assets/Textures/Planets and Stuff/space_background_seamless_4x.png" id="2_uo056"]
 [ext_resource type="Script" uid="uid://dgfehlrrbb2on" path="res://Levels/Pyrax Level/pyrax.gd" id="3_uo056"]
 [ext_resource type="Texture2D" uid="uid://2q7wwu40r3k8" path="res://Assets/Textures/Planets and Stuff/Pyrax.png" id="4_xdscm"]
-[ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://UI/HUD/waypoint_marker.tscn" id="5_5e7b7"]
+[ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://UI/HUD/Waypoints/waypoint_marker.tscn" id="5_5e7b7"]
 [ext_resource type="PackedScene" uid="uid://clu42du2dffit" path="res://Entities/Player/triangle.tscn" id="6_xxqy0"]
 [ext_resource type="Texture2D" uid="uid://btrpjnha2krd0" path="res://empty.png" id="7_hrp2l"]
+[ext_resource type="Script" uid="uid://u6gq3mopm0mq" path="res://Levels/Template Parts/camera_shake.gd" id="25_013ry"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xng1g"]
 shader = ExtResource("1_jhmw5")
@@ -112,8 +113,9 @@ sprite_frames = SubResource("SpriteFrames_77k6c")
 frame_progress = 0.32209024
 
 [node name="WaypointMarker" parent="Pyrax" unique_id=657557681 node_paths=PackedStringArray("player", "planet") instance=ExtResource("5_5e7b7")]
+position = Vector2(0, -100)
 scale = Vector2(5, 5)
-screen_margin = 40.0
+screen_margin = 90.0
 player = NodePath("../../Triangle")
 planet = NodePath("..")
 
@@ -133,8 +135,9 @@ sprite_frames = SubResource("SpriteFrames_77k6c")
 frame_progress = 0.32209024
 
 [node name="WaypointMarker" parent="Cryax" unique_id=803858590 node_paths=PackedStringArray("player", "planet") instance=ExtResource("5_5e7b7")]
+position = Vector2(0, -100)
 scale = Vector2(5, 5)
-screen_margin = 40.0
+screen_margin = 90.0
 player = NodePath("../../Triangle")
 planet = NodePath("..")
 
@@ -154,18 +157,26 @@ sprite_frames = SubResource("SpriteFrames_77k6c")
 frame_progress = 0.32209024
 
 [node name="WaypointMarker" parent="Aquarius" unique_id=1125288020 node_paths=PackedStringArray("player", "planet") instance=ExtResource("5_5e7b7")]
+position = Vector2(0, -100)
 scale = Vector2(5, 5)
-screen_margin = 40.0
+screen_margin = 90.0
 player = NodePath("../../Triangle")
 planet = NodePath("..")
 
-[node name="Triangle" parent="." unique_id=669404060 instance=ExtResource("6_xxqy0")]
+[node name="Triangle" parent="." unique_id=669404060 node_paths=PackedStringArray("camera") instance=ExtResource("6_xxqy0")]
+camera = NodePath("Camera2D3")
+
+[node name="Camera2D3" type="Camera2D" parent="Triangle" unique_id=204231866]
+zoom = Vector2(0.2, 0.2)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("25_013ry")
 
 [node name="Borders" type="Node2D" parent="." unique_id=7262330]
 
 [node name="Top" type="StaticBody2D" parent="Borders" unique_id=1645593231]
 position = Vector2(0, 16000)
-scale = Vector2(8000, 5)
+scale = Vector2(100, 5)
 
 [node name="Top" type="Sprite2D" parent="Borders/Top" unique_id=1369562048]
 scale = Vector2(0.99999994, 0.99999994)
@@ -175,21 +186,21 @@ texture = ExtResource("7_hrp2l")
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_4ayxd")
 
-[node name="Bottom2" type="StaticBody2D" parent="Borders" unique_id=2117904560]
+[node name="Bottom" type="StaticBody2D" parent="Borders" unique_id=2117904560]
 position = Vector2(0, -16000)
-scale = Vector2(8000, 5)
+scale = Vector2(100, 5)
 
-[node name="Bottom" type="Sprite2D" parent="Borders/Bottom2" unique_id=1348053112]
+[node name="Bottom" type="Sprite2D" parent="Borders/Bottom" unique_id=1348053112]
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("7_hrp2l")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Bottom2" unique_id=121124502]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Bottom" unique_id=121124502]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_4ayxd")
 
 [node name="Left" type="StaticBody2D" parent="Borders" unique_id=1990158247]
 position = Vector2(16000, 0)
-scale = Vector2(5, 8000)
+scale = Vector2(5, 100)
 
 [node name="Left" type="Sprite2D" parent="Borders/Left" unique_id=1873907335]
 scale = Vector2(0.99999994, 0.99999994)
@@ -201,7 +212,7 @@ shape = SubResource("RectangleShape2D_4ayxd")
 
 [node name="Right" type="StaticBody2D" parent="Borders" unique_id=1577762091]
 position = Vector2(-16000, 0)
-scale = Vector2(5, -8000)
+scale = Vector2(5, -100)
 
 [node name="Right" type="Sprite2D" parent="Borders/Right" unique_id=317213452]
 scale = Vector2(0.99999994, 0.99999994)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5s0obiq85enf"]
 
 [ext_resource type="Script" uid="uid://b14b0pkpq705n" path="res://Levels/Template Parts/planet.gd" id="1_wfw40"]
-[ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://UI/HUD/waypoint_marker.tscn" id="2_7664v"]
+[ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://UI/HUD/Waypoints/waypoint_marker.tscn" id="2_7664v"]
 [ext_resource type="Texture2D" uid="uid://2q7wwu40r3k8" path="res://Assets/Textures/Planets and Stuff/Pyrax.png" id="2_xaqp8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]

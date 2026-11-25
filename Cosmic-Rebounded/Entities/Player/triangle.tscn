@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dlxa015m1e1t1" path="res://Assets/Textures/Effects/Bounce3.png" id="9_n3j46"]
 [ext_resource type="Texture2D" uid="uid://dvxb2w0hifns6" path="res://Assets/Textures/Effects/Null.png" id="9_p1awi"]
 [ext_resource type="AudioStream" uid="uid://obgrkrd0cca3" path="res://Assets/Audio/SFX/Player/sfx_player_damaged.wav" id="13_mefwt"]
-[ext_resource type="Script" uid="uid://u6gq3mopm0mq" path="res://Levels/Template Parts/camera_shake.gd" id="18_v3ep7"]
+[ext_resource type="PackedScene" uid="uid://cjoleivo0bwd" path="res://UI/HUD/Healthbar/Healthbar.tscn" id="19_jxuot"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ayxd"]
 animations = [{
@@ -119,7 +119,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ayxd"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ga5ge"]
 radius = 35.1
 
 [sub_resource type="Curve2D" id="Curve2D_stoj2"]
@@ -128,11 +128,10 @@ _data = {
 }
 point_count = 4
 
-[node name="Triangle" type="CharacterBody2D" unique_id=669404060 node_paths=PackedStringArray("camera")]
+[node name="Triangle" type="CharacterBody2D" unique_id=669404060]
 collision_layer = 65535
 collision_mask = 65535
 script = ExtResource("1_jxuot")
-camera = NodePath("Camera2D2")
 enemy_scene = ExtResource("2_stoj2")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1606221345]
@@ -178,14 +177,8 @@ frame_progress = 1.0
 stream = ExtResource("13_mefwt")
 bus = &"SFX"
 
-[node name="Camera2D2" type="Camera2D" parent="." unique_id=1707088672]
-zoom = Vector2(0.2, 0.2)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-script = ExtResource("18_v3ep7")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1910395332]
-shape = SubResource("CircleShape2D_4ayxd")
+shape = SubResource("CircleShape2D_ga5ge")
 
 [node name="Enemy Spawn Timer" type="Timer" parent="." unique_id=16678693]
 wait_time = 0.5
@@ -197,6 +190,15 @@ scale = Vector2(5, 5)
 curve = SubResource("Curve2D_stoj2")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=262406714]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1023106954]
+
+[node name="Healthbar" parent="HUD" unique_id=1297563292 instance=ExtResource("19_jxuot")]
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 255.0
+offset_bottom = 19.0
+scale = Vector2(3, 3)
 
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]

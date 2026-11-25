@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var max_hp: int = 100
 @export var enemy_scene: PackedScene
 @onready var spawn_location: PathFollow2D = $Path2D/PathFollow2D
-
+@onready var healthbar = $HUD/Healthbar
 @export var bounce_lock_duration = 0.2
 var bounce_lock = false
 
@@ -35,6 +35,7 @@ const STUN_SOUNDS := [
 func _ready() -> void:
 	add_to_group("player")
 	hp = max_hp
+	healthbar.init_health(hp)
 	dir = (get_global_mouse_position() - global_position).normalized()
 
 var dir = Vector2.ZERO
@@ -72,6 +73,7 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		if dashing:
 			velocity = dash_speed * dash_direction
+			$Sprite2D.animation = "supermodedash"
 		elif knockback_lock:
 			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		elif bounce_lock:
@@ -130,9 +132,10 @@ func take_damage(amount: int) -> void:
 	camera.trigger_shake()
 	Sfx.play(STUN_SOUNDS.pick_random())
 	hp -= amount
-	print(hp)
 	if hp <= -1:
 		get_tree().paused = true
+	healthbar.health = hp
+	
 
 func apply_vulnerable_knockback(away_direction: Vector2) -> void:
 
@@ -152,6 +155,7 @@ func apply_vulnerable_knockback(away_direction: Vector2) -> void:
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false
+	$Sprite2D.animation = "dash"
 
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
