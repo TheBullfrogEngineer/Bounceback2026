@@ -11,9 +11,7 @@ func _set_health(new_health):
 	var prev_health = health
 	health = min(max_value, new_health)
 	value = health
-	# Death.
-	if health <= 0:
-		queue_free()
+
 	# Taking Damage.
 	if health < prev_health:
 		timer.start()

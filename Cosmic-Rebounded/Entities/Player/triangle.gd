@@ -10,8 +10,10 @@ extends CharacterBody2D
 @onready var spawn_location: PathFollow2D = $Path2D/PathFollow2D
 @onready var healthbar = $HUD/Healthbar
 @onready var xpbar = $HUD/XpBar
+@onready var kill_streak = $HUD/Combo
 @export var bounce_lock_duration = 0.2
 var bounce_lock = false
+var bounce_back = true
 
 @export var vulnerable_knockback_force: float = 1400.0
 @export var vulnerable_knockback_lock_duration: float = 0.3
@@ -25,6 +27,7 @@ var dash_direction: Vector2 = Vector2.RIGHT
 var can_move = true
 var can_dash = true
 
+var combo = 0
 var invincible = false
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
@@ -126,6 +129,8 @@ func _kill_enemy(enemy: Node) -> void:
 	%Effects.play("Kill")
 	var origin: Vector2 = enemy.global_position
 	if enemy.has_method("die"):
+		combo += 1
+		kill_streak.start_combo()
 		xpbar.xp += 10
 		enemy.die()
 	else:
@@ -139,10 +144,18 @@ func take_damage(amount: int) -> void:
 		Sfx.play(STUN_SOUNDS.pick_random())
 		hp -= amount
 		if hp <= -1:
-			get_tree().paused = true
+			byebye()
+		if hp == 0:
+			hp = 1
 		healthbar.health = hp
-		
-	
+
+func byebye():
+	if bounce_back == true:
+		hp = max_hp
+		bounce_back = false
+	else:
+		get_tree().paused = true
+		Levelmanager.reset_xp()	
 
 func apply_vulnerable_knockback(away_direction: Vector2) -> void:
 

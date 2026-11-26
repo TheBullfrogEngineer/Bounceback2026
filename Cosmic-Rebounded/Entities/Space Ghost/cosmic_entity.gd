@@ -29,13 +29,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			die()
 		else:
 			if can_damage:
-				player.take_damage(1)
+				player.take_damage(25)
 				can_damage = false
 				$Timer.start()
 		
 func die():
 	Sfx.play(DEATH_SOUNDS.pick_random())
 	player.xpbar.xp += 1
+	player.combo += 1
+	player.kill_streak.start_combo()
 	camera.trigger_shake()
 	queue_free()
 
