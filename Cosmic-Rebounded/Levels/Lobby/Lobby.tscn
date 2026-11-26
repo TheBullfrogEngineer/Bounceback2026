@@ -164,9 +164,9 @@ player = NodePath("../../Triangle")
 planet = NodePath("..")
 
 [node name="Triangle" parent="." unique_id=669404060 node_paths=PackedStringArray("camera") instance=ExtResource("6_xxqy0")]
-camera = NodePath("Camera2D3")
+camera = NodePath("camera")
 
-[node name="Camera2D3" type="Camera2D" parent="Triangle" unique_id=204231866]
+[node name="camera" type="Camera2D" parent="Triangle" unique_id=204231866]
 zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0

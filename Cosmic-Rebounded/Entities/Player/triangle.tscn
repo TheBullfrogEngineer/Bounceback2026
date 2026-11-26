@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dvxb2w0hifns6" path="res://Assets/Textures/Effects/Null.png" id="9_p1awi"]
 [ext_resource type="AudioStream" uid="uid://obgrkrd0cca3" path="res://Assets/Audio/SFX/Player/sfx_player_damaged.wav" id="13_mefwt"]
 [ext_resource type="PackedScene" uid="uid://cjoleivo0bwd" path="res://UI/HUD/Healthbar/Healthbar.tscn" id="19_jxuot"]
+[ext_resource type="PackedScene" uid="uid://6g7mdpoxiv0h" path="res://UI/HUD/XpBar/Xpbar.tscn" id="20_0grde"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ayxd"]
 animations = [{
@@ -199,6 +200,15 @@ offset_top = 15.0
 offset_right = 255.0
 offset_bottom = 19.0
 scale = Vector2(3, 3)
+
+[node name="XpBar" parent="HUD" unique_id=1815647223 instance=ExtResource("20_0grde")]
+offset_left = 15.0
+offset_top = 45.0
+offset_right = 255.0
+offset_bottom = 48.999996
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="invincibility_timer" type="Timer" parent="." unique_id=1647260161]
 wait_time = 0.4

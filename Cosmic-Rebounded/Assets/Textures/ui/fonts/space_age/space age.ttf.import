@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cwhrnc44j65uh"
-path="res://.godot/imported/PixelOperator8.ttf-6f2657c845ce729525a0d6e48ad6eeec.fontdata"
+uid="uid://cvnffk7tyys7h"
+path="res://.godot/imported/space age.ttf-9a6e2414727ed4d01846083d39aa1bd2.fontdata"
 
 [deps]
 
-source_file="res://Assets/Textures/ui/fonts/PixelOperator8.ttf"
-dest_files=["res://.godot/imported/PixelOperator8.ttf-6f2657c845ce729525a0d6e48ad6eeec.fontdata"]
+source_file="res://Assets/Textures/ui/fonts/space_age/space age.ttf"
+dest_files=["res://.godot/imported/space age.ttf-9a6e2414727ed4d01846083d39aa1bd2.fontdata"]
 
 [params]
 

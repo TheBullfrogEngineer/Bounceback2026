@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var enemy_scene: PackedScene
 @onready var spawn_location: PathFollow2D = $Path2D/PathFollow2D
 @onready var healthbar = $HUD/Healthbar
+@onready var xpbar = $HUD/XpBar
 @export var bounce_lock_duration = 0.2
 var bounce_lock = false
 
@@ -125,6 +126,7 @@ func _kill_enemy(enemy: Node) -> void:
 	%Effects.play("Kill")
 	var origin: Vector2 = enemy.global_position
 	if enemy.has_method("die"):
+		xpbar.xp += 10
 		enemy.die()
 	else:
 		enemy.queue_free()
@@ -139,6 +141,7 @@ func take_damage(amount: int) -> void:
 		if hp <= -1:
 			get_tree().paused = true
 		healthbar.health = hp
+		
 	
 
 func apply_vulnerable_knockback(away_direction: Vector2) -> void:

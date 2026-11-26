@@ -6,6 +6,10 @@ var camera
 var speed: float = 1065.0
 var can_damage = true
 #@onready var sprite = $AnimatedSprite2D
+const DEATH_SOUNDS := [
+	preload("res://Assets/Audio/SFX/Enemies/sfx_enemy_death_a.wav"),
+	preload("res://Assets/Audio/SFX/Enemies/sfx_enemy_death_b.wav"),
+]
 
 func _ready() -> void:
 	#sprite.play("idle")
@@ -30,6 +34,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				$Timer.start()
 		
 func die():
+	Sfx.play(DEATH_SOUNDS.pick_random())
+	player.xpbar.xp += 1
 	camera.trigger_shake()
 	queue_free()
 

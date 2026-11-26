@@ -41,10 +41,6 @@ enabled=PackedStringArray()
 
 navigation_polygon_source_geometry_group=""
 
-[gui]
-
-theme/custom_font="uid://fsbors10b7bh"
-
 [input]
 
 CancelMotion={

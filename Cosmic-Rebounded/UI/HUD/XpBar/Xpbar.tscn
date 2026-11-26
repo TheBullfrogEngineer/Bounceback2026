@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://6g7mdpoxiv0h"]
+
+[ext_resource type="Script" uid="uid://bhq6nw286gkgc" path="res://UI/HUD/XpBar/xpbar.gd" id="1_iq0o8"]
+[ext_resource type="FontFile" uid="uid://cvnffk7tyys7h" path="res://Assets/Textures/ui/fonts/space_age/space age.ttf" id="2_g4sr0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn68i"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5repr"]
+bg_color = Color(5.7275593e-06, 0.693061, 0.46073192, 1)
+
+[node name="XpBar" type="ProgressBar" unique_id=1297563292]
+z_index = 1
+offset_right = 240.0
+offset_bottom = 4.0
+theme_override_colors/font_color = Color(0, 0.9137255, 0.14509805, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 5
+theme_override_styles/background = SubResource("StyleBoxFlat_qn68i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5repr")
+value = 60.0
+show_percentage = false
+script = ExtResource("1_iq0o8")
+
+[node name="Label" type="Label" parent="." unique_id=1574781549]
+layout_mode = 0
+offset_left = 244.0
+offset_top = -3.0
+offset_right = 284.0
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(0.35686275, 1, 0.36078432, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.44705883)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_g4sr0")
+theme_override_font_sizes/font_size = 10
+text = "0"
+
+[node name="Label2" type="Label" parent="." unique_id=1682523104]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 6.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0.06666667, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.68235296)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_g4sr0")
+text = "100"
