@@ -161,6 +161,8 @@ func _on_play_button_toggled(_toggled_on: bool) -> void:
 	element = selected.get_index()
 	visible(element)
 	menu_label.text = "Menu"
+	settings_button.visible = true
+	volume_button.visible = true
 
 
 func _on_volume_button_toggled(_toggled_on: bool) -> void:
@@ -225,6 +227,8 @@ func _on_skilltrees_toggled(toggled_on: bool) -> void:
 	element = selected.get_index()
 	visible(element)
 	menu_label.text = "Skill Trees"
+	settings_button.visible = false
+	volume_button.visible = false
 
 
 func _on_skilltrees_mouse_entered() -> void:
