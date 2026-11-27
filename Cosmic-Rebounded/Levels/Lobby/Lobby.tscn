@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://UI/HUD/Waypoints/waypoint_marker.tscn" id="5_5e7b7"]
 [ext_resource type="PackedScene" uid="uid://clu42du2dffit" path="res://Entities/Player/triangle.tscn" id="6_xxqy0"]
 [ext_resource type="Texture2D" uid="uid://btrpjnha2krd0" path="res://empty.png" id="7_hrp2l"]
+[ext_resource type="PackedScene" uid="uid://dqti32tgx54ub" path="res://UI/Menu/pause_menu.tscn" id="10_xdscm"]
 [ext_resource type="Script" uid="uid://u6gq3mopm0mq" path="res://Levels/Template Parts/camera_shake.gd" id="25_013ry"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xng1g"]
@@ -221,5 +222,7 @@ texture = ExtResource("7_hrp2l")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right" unique_id=935595959]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_4ayxd")
+
+[node name="PauseMenu" parent="." unique_id=1870181315 instance=ExtResource("10_xdscm")]
 
 [connection signal="body_entered" from="Pyrax/Area2D" to="Pyrax" method="_on_area_2d_body_entered"]

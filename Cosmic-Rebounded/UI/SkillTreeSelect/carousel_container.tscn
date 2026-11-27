@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://blf0wl1m1stjh"]
+
+[ext_resource type="Script" uid="uid://ctmek8fomv8ns" path="res://UI/SkillTreeSelect/carousel_container.gd" id="1_5gor3"]
+
+[node name="CarouselContainer" type="Node2D" unique_id=788200741]
+script = ExtResource("1_5gor3")

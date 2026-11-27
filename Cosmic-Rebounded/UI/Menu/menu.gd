@@ -11,11 +11,14 @@ signal resume_requested
 @onready var volume_panel: Panel = %VolumePanel
 @onready var settings_panel: Panel = %SettingsPanel
 @onready var settings_button: TextureButton = %SettingsButton
+@onready var skilltrees_button: TextureButton = %Skilltrees
+@onready var skilltrees_panel: Panel = %SkilltreesPanel
 @onready var volume_button: TextureButton = %VolumeButton
 @onready var play_button: TextureButton = %PlayButton
 @onready var settings_og_position: Vector2 = settings_button.position
 @onready var volume_og_position: Vector2 = volume_button.position
 @onready var play_og_position: Vector2 = play_button.position
+@onready var skilltrees_og_position: Vector2 = skilltrees_button.position
 @onready var menu = menu_label.get_owner()
 @onready var back_sfx: AudioStreamPlayer2D = $SfxUiBack
 @onready var error_sfx: AudioStreamPlayer2D = $SfxUiError
@@ -50,7 +53,7 @@ func _ready() -> void:
 	menu.visible = false
 	get_tree().paused = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	menu_color = Color("ce002fff")
+	menu_color = Color("ebe3f4ff")
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	menu_label.set("theme_override_colors/font_color", menu_color)
 	main_buttons.modulate = menu_color
@@ -81,7 +84,10 @@ func _input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	if selected != null:
 		selected.button_pressed = true
-
+	if Input.is_action_just_pressed("l"):
+		$Panels/SkilltreesPanel/CarouselContainer._left()
+	if Input.is_action_just_pressed("r"):
+		$Panels/SkilltreesPanel/CarouselContainer._right()
 
 func shaking(element, og_position) -> void:
 	shake_token += 1
@@ -211,3 +217,33 @@ func change_color(_color) -> void:
 	play_panel.modulate = menu_color
 	volume_panel.modulate = menu_color
 	settings_panel.modulate = menu_color
+
+
+func _on_skilltrees_toggled(toggled_on: bool) -> void:
+	select_sfx.play()
+	selected = skilltrees_button
+	element = selected.get_index()
+	visible(element)
+	menu_label.text = "Skill Trees"
+
+
+func _on_skilltrees_mouse_entered() -> void:
+	hover_sfx.play()
+	hovered_button = skilltrees_button
+	this = skilltrees_button
+	z += 1
+	skilltrees_button.z_index = z
+	shaking(skilltrees_button, skilltrees_og_position)
+
+
+func _on_skilltrees_mouse_exited() -> void:
+	stop_shaking(skilltrees_button, skilltrees_og_position)
+	this = null
+
+
+func _on_left_pressed() -> void:
+	$Panels/SkilltreesPanel/CarouselContainer._left()
+
+
+func _on_right_pressed() -> void:
+	$Panels/SkilltreesPanel/CarouselContainer._right()
