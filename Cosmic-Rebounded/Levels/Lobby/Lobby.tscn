@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://2q7wwu40r3k8" path="res://Assets/Textures/Planets and Stuff/Pyrax.png" id="4_xdscm"]
 [ext_resource type="PackedScene" uid="uid://d263dfso6pxwe" path="res://UI/HUD/Waypoints/waypoint_marker.tscn" id="5_5e7b7"]
 [ext_resource type="PackedScene" uid="uid://clu42du2dffit" path="res://Entities/Player/triangle.tscn" id="6_xxqy0"]
-[ext_resource type="Texture2D" uid="uid://btrpjnha2krd0" path="res://empty.png" id="7_hrp2l"]
+[ext_resource type="Texture2D" uid="uid://clmk613frlouq" path="res://Assets/Textures/Planets and Stuff/Asteroid.png" id="9_xdscm"]
 [ext_resource type="PackedScene" uid="uid://dqti32tgx54ub" path="res://UI/Menu/pause_menu.tscn" id="10_xdscm"]
 [ext_resource type="Script" uid="uid://u6gq3mopm0mq" path="res://Levels/Template Parts/camera_shake.gd" id="25_013ry"]
 
@@ -83,22 +83,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ayxd"]
-size = Vector2(325, 325)
+size = Vector2(499.90994, 408.26004)
 
 [node name="Map" type="Node2D" unique_id=2120505794]
 script = ExtResource("1_r3v2t")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=174988442]
 material = SubResource("ShaderMaterial_xng1g")
-offset_left = -15141.0
-offset_top = -15286.0
-offset_right = 15209.0
-offset_bottom = 15258.0
+offset_left = -30926.0
+offset_top = -29131.941
+offset_right = 30495.0
+offset_bottom = 32681.668
 texture = ExtResource("2_uo056")
 stretch_mode = 1
 
 [node name="Pyrax" type="Node2D" parent="." unique_id=1725034579]
-position = Vector2(3191, -10163)
+position = Vector2(9655, -7740.0005)
 scale = Vector2(5, 5)
 script = ExtResource("3_uo056")
 
@@ -121,7 +121,7 @@ player = NodePath("../../Triangle")
 planet = NodePath("..")
 
 [node name="Cryax" type="Node2D" parent="." unique_id=662875486]
-position = Vector2(-8000, 8000)
+position = Vector2(-12526, 10987)
 scale = Vector2(5, 5)
 
 [node name="Area2D" type="Area2D" parent="Cryax" unique_id=117990271]
@@ -143,7 +143,7 @@ player = NodePath("../../Triangle")
 planet = NodePath("..")
 
 [node name="Aquarius" type="Node2D" parent="." unique_id=1134186191]
-position = Vector2(9000, 14000)
+position = Vector2(12032, 14543)
 scale = Vector2(5, 5)
 
 [node name="Area2D" type="Area2D" parent="Aquarius" unique_id=2026714855]
@@ -181,9 +181,9 @@ scale = Vector2(100, 5)
 
 [node name="Top" type="Sprite2D" parent="Borders/Top" unique_id=1369562048]
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("7_hrp2l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Top" unique_id=2055334023]
+position = Vector2(1.02, 686.6)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_4ayxd")
 
@@ -193,10 +193,10 @@ scale = Vector2(100, 5)
 
 [node name="Bottom" type="Sprite2D" parent="Borders/Bottom" unique_id=1348053112]
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("7_hrp2l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Bottom" unique_id=121124502]
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(-0.24999999, 211.19994)
+scale = Vector2(1.0000002, 0.99999994)
 shape = SubResource("RectangleShape2D_4ayxd")
 
 [node name="Left" type="StaticBody2D" parent="Borders" unique_id=1990158247]
@@ -205,10 +205,10 @@ scale = Vector2(5, 100)
 
 [node name="Left" type="Sprite2D" parent="Borders/Left" unique_id=1873907335]
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("7_hrp2l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left" unique_id=1342931446]
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(1533.2002, -6.03)
+scale = Vector2(0.99999994, 1)
 shape = SubResource("RectangleShape2D_4ayxd")
 
 [node name="Right" type="StaticBody2D" parent="Borders" unique_id=1577762091]
@@ -217,11 +217,90 @@ scale = Vector2(5, -100)
 
 [node name="Right" type="Sprite2D" parent="Borders/Right" unique_id=317213452]
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("7_hrp2l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right" unique_id=935595959]
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(-1592.6, 10.03)
+scale = Vector2(0.99999994, 1.0000001)
 shape = SubResource("RectangleShape2D_4ayxd")
+
+[node name="Asteroid Barrier" type="Node2D" parent="Borders" unique_id=1757282586]
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=1626721731]
+position = Vector2(17468.094, -14924.727)
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=1632973532]
+position = Vector2(5856.0938, -14809.727)
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=1784713070]
+position = Vector2(-5736.9063, -14691.727)
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=214978837]
+position = Vector2(-17333, -14666)
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=1219008725]
+z_index = 1
+position = Vector2(17891, 18601.273)
+scale = Vector2(5.8176785, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=451702733]
+position = Vector2(5781.8203, 18716.273)
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=950892182]
+position = Vector2(-5811.1797, 18834.273)
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=954920861]
+position = Vector2(-17450.18, 18961.273)
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=546733912]
+position = Vector2(-23334.727, -9101.999)
+rotation = 1.5707964
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=1247454700]
+position = Vector2(-23319.727, 2444)
+rotation = 1.5707964
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=1140914293]
+position = Vector2(23380, -9365)
+rotation = 1.5707964
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=1559601750]
+position = Vector2(23423, 2135)
+rotation = 1.5707964
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=1020067544]
+position = Vector2(23490, 13602)
+rotation = 1.5707964
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Borders/Asteroid Barrier" unique_id=1989252333]
+position = Vector2(-23291.727, 13965)
+rotation = 1.5707964
+scale = Vector2(5.3598704, 5.3598704)
+texture = ExtResource("9_xdscm")
 
 [node name="PauseMenu" parent="." unique_id=1870181315 instance=ExtResource("10_xdscm")]
 

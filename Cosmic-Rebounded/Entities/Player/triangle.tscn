@@ -110,7 +110,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Dashing",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -139,7 +139,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Idle",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pc3i1"]
@@ -210,8 +210,9 @@ position = Vector2(-16, 5)
 rotation = -0.53232545
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4ayxd")
-animation = &"Dashing"
+animation = &"Idle"
 autoplay = "Idle"
+frame_progress = 0.068858035
 flip_h = true
 
 [node name="dash_timer" type="Timer" parent="." unique_id=528950344]
