@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		if dashing:
 			velocity = dash_speed * dash_direction
-			$Sprite2D.animation = "supermodedash"
+			$Sprite2D.animation = "Dashing"
 		elif knockback_lock:
 			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		elif bounce_lock:
@@ -175,7 +175,7 @@ func apply_vulnerable_knockback(away_direction: Vector2) -> void:
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false
-	$Sprite2D.animation = "dash"
+	$Sprite2D.animation = "Idle"
 
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true

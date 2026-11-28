@@ -32,6 +32,8 @@ signal resume_requested
 @export var music_audio_bus: String
 @export var sfx_audio_bus: String
 
+@onready var mobility_tree: Panel = %MobilityTree
+
 
 var menu_color = Color("ffffffff")
 var is_darker: bool = false
@@ -251,3 +253,10 @@ func _on_left_pressed() -> void:
 
 func _on_right_pressed() -> void:
 	$Panels/SkilltreesPanel/CarouselContainer._right()
+
+
+func _on_upgrade_mobility_pressed() -> void:
+	skilltrees_panel.visible = false
+	mobility_tree.visible = true
+	select_sfx.play()
+	menu_label.text = "Mobility"

@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b1rvdemwo8py7" path="res://Assets/Textures/ui/pause_menu/option1.png" id="6_6q4ei"]
 [ext_resource type="PackedScene" uid="uid://blf0wl1m1stjh" path="res://UI/SkillTreeSelect/carousel_container.tscn" id="6_kdi6k"]
 [ext_resource type="Texture2D" uid="uid://bgnpb5mkqlxu6" path="res://Assets/Textures/ui/pause_menu/option1_pressed.png" id="7_14ist"]
+[ext_resource type="FontFile" uid="uid://cvnffk7tyys7h" path="res://Assets/Textures/ui/fonts/space_age/space age.ttf" id="7_qv7eq"]
+[ext_resource type="PackedScene" uid="uid://mcp2vsl5wpyg" path="res://Systems/Skill Tree/skillbutton.tscn" id="8_6q4ei"]
 [ext_resource type="Texture2D" uid="uid://csw7l4j253qwn" path="res://Assets/Textures/ui/pause_menu/option2.png" id="8_57l06"]
 [ext_resource type="Texture2D" uid="uid://dcvvpkx2n00aj" path="res://Assets/Textures/ui/pause_menu/option2_pressed.png" id="9_ohbit"]
 [ext_resource type="Texture2D" uid="uid://igdtgn16gtme" path="res://Assets/Textures/ui/pause_menu/option3.png" id="10_ge871"]
@@ -306,6 +308,7 @@ script = ExtResource("5_qv7eq")
 
 [node name="SkilltreesPanel" type="Panel" parent="Menu/Panels" unique_id=931257923]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -323,6 +326,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_kdi6k")
 [node name="CarouselContainer" parent="Menu/Panels/SkilltreesPanel" unique_id=788200741 node_paths=PackedStringArray("position_offset_node") instance=ExtResource("6_kdi6k")]
 z_index = 30
 position = Vector2(300, 175)
+follow_button_focus = true
 position_offset_node = NodePath("Panel Select")
 
 [node name="Panel Select" type="Control" parent="Menu/Panels/SkilltreesPanel/CarouselContainer" unique_id=1408576494]
@@ -342,70 +346,39 @@ pivot_offset = Vector2(100, 150)
 focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ggs6p")
 
-[node name="Mobility2" type="Panel" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select" unique_id=395000543]
-modulate = Color(1, 1, 1, 0.65)
-z_index = -1
-layout_mode = 0
-offset_left = 220.0
-offset_top = -150.0
-offset_right = 420.0
-offset_bottom = 150.0
-scale = Vector2(0.75, 0.75)
-pivot_offset = Vector2(100, 150)
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ggs6p")
+[node name="Label" type="Label" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select/Mobility" unique_id=1675221459]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.5
+offset_top = 3.0340576
+offset_right = 130.5
+offset_bottom = 46.034058
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_qv7eq")
+theme_override_font_sizes/font_size = 45
+text = "Mobility"
 
-[node name="Mobility3" type="Panel" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select" unique_id=860993305]
-modulate = Color(1, 1, 1, 0.3)
-z_index = -2
-layout_mode = 0
-offset_left = 440.0
-offset_top = -150.0
-offset_right = 640.0
-offset_bottom = 150.0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(100, 150)
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ggs6p")
-
-[node name="Mobility4" type="Panel" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select" unique_id=324544548]
-modulate = Color(1, 1, 1, 0)
-z_index = -3
-layout_mode = 0
-offset_left = 660.0
-offset_top = -150.0
-offset_right = 860.0
-offset_bottom = 150.0
-scale = Vector2(0.25, 0.25)
-pivot_offset = Vector2(100, 150)
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ggs6p")
-
-[node name="Mobility5" type="Panel" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select" unique_id=435568126]
-modulate = Color(1, 1, 1, 0)
-z_index = -4
-layout_mode = 0
-offset_left = 880.0
-offset_top = -150.0
-offset_right = 1080.0
-offset_bottom = 150.0
-scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(100, 150)
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ggs6p")
-
-[node name="Mobility6" type="Panel" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select" unique_id=1706587507]
-modulate = Color(1, 1, 1, 0)
-z_index = -5
-layout_mode = 0
-offset_left = 1100.0
-offset_top = -150.0
-offset_right = 1300.0
-offset_bottom = 150.0
-scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(100, 150)
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ggs6p")
+[node name="UpgradeMobility" type="Button" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select/Mobility" unique_id=488486551]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -15.5
+offset_right = 37.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_qv7eq")
+theme_override_font_sizes/font_size = 30
+text = "Upgrade"
 
 [node name="Left" type="Button" parent="Menu/Panels/SkilltreesPanel" unique_id=1672922587]
 unique_name_in_owner = true
@@ -424,6 +397,84 @@ offset_top = 417.01166
 offset_right = 758.5552
 offset_bottom = 448.01166
 text = "Next"
+
+[node name="MobilityTree" type="Panel" parent="Menu/Panels" unique_id=426790198]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -348.0
+offset_top = -167.99998
+offset_right = 252.0719
+offset_bottom = 160.55464
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1465292, 1.1078826)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4hy44")
+
+[node name="SkillButton" parent="Menu/Panels/MobilityTree" unique_id=1345481500 instance=ExtResource("8_6q4ei")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.92273
+offset_top = -10.0
+offset_right = -236.92271
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkillButton" parent="Menu/Panels/MobilityTree/SkillButton" unique_id=1758940220 instance=ExtResource("8_6q4ei")]
+layout_mode = 0
+offset_left = 34.88793
+offset_top = 109.21734
+offset_right = 74.88793
+offset_bottom = 149.21733
+disabled = true
+
+[node name="SkillButton" parent="Menu/Panels/MobilityTree/SkillButton/SkillButton" unique_id=1733767311 instance=ExtResource("8_6q4ei")]
+layout_mode = 0
+offset_left = 106.4081
+offset_top = -25.273434
+offset_right = 146.4081
+offset_bottom = 14.726566
+disabled = true
+
+[node name="SkillButton2" parent="Menu/Panels/MobilityTree/SkillButton/SkillButton" unique_id=237019057 instance=ExtResource("8_6q4ei")]
+layout_mode = 0
+offset_left = 104.66371
+offset_top = 27.07868
+offset_right = 144.66371
+offset_bottom = 67.07868
+disabled = true
+
+[node name="SkillButton2" parent="Menu/Panels/MobilityTree/SkillButton" unique_id=1153498797 instance=ExtResource("8_6q4ei")]
+layout_mode = 0
+offset_left = 66.28704
+offset_top = -62.280964
+offset_right = 106.28704
+offset_bottom = -22.280964
+disabled = true
+
+[node name="SkillButton3" parent="Menu/Panels/MobilityTree/SkillButton" unique_id=262976081 instance=ExtResource("8_6q4ei")]
+layout_mode = 0
+offset_left = 54.94848
+offset_top = -148.0301
+offset_right = 94.94848
+offset_bottom = -108.030106
+disabled = true
+
+[node name="SkillButton4" parent="Menu/Panels/MobilityTree/SkillButton" unique_id=23070735 instance=ExtResource("8_6q4ei")]
+layout_mode = 0
+offset_left = 65.41484
+offset_top = 21.662943
+offset_right = 105.41484
+offset_bottom = 61.66294
+disabled = true
 
 [node name="MainButtons" type="Control" parent="Menu" unique_id=1060669825]
 unique_name_in_owner = true
@@ -457,6 +508,7 @@ stretch_mode = 4
 
 [node name="VolumeButton" type="TextureButton" parent="Menu/MainButtons" unique_id=1437962803]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -478,6 +530,7 @@ stretch_mode = 4
 
 [node name="SettingsButton" type="TextureButton" parent="Menu/MainButtons" unique_id=862944627]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -540,6 +593,7 @@ bus = &"SFX"
 [connection signal="value_changed" from="Menu/Panels/VolumePanel/SFXSlider" to="Menu" method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="Menu/Panels/VolumePanel/MusicSlider" to="Menu" method="_on_music_slider_value_changed"]
 [connection signal="color_changed" from="Menu/Panels/SettingsPanel/ColorPickerButton" to="Menu" method="_on_color_picker_button_color_changed"]
+[connection signal="pressed" from="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select/Mobility/UpgradeMobility" to="Menu" method="_on_upgrade_mobility_pressed"]
 [connection signal="pressed" from="Menu/Panels/SkilltreesPanel/Left" to="Menu" method="_on_left_pressed"]
 [connection signal="pressed" from="Menu/Panels/SkilltreesPanel/Right" to="Menu" method="_on_right_pressed"]
 [connection signal="mouse_entered" from="Menu/MainButtons/PlayButton" to="Menu" method="_on_play_button_mouse_entered"]

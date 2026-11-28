@@ -1,20 +1,15 @@
 [gd_scene format=3 uid="uid://clu42du2dffit"]
 
 [ext_resource type="Script" uid="uid://pjrosdsmens3" path="res://Entities/Player/triangle.gd" id="1_jxuot"]
-[ext_resource type="Texture2D" uid="uid://ciy4ttwjvdppx" path="res://Assets/Textures/player/player_dash.png" id="2_cbtp0"]
 [ext_resource type="PackedScene" uid="uid://cuvs10hp7qs3d" path="res://Entities/Space Ghost/enemy.tscn" id="2_stoj2"]
-[ext_resource type="Texture2D" uid="uid://c1jsdgicatm2r" path="res://Assets/Textures/player/player_bounce.png" id="3_1l35o"]
-[ext_resource type="Texture2D" uid="uid://hdjhlv5cxqks" path="res://Assets/Textures/player/spiked_triangle_bounce.png" id="5_h0tan"]
+[ext_resource type="Texture2D" uid="uid://dnl0csb4h0clj" path="res://Assets/Textures/player/Player Comet.png" id="3_owt54"]
 [ext_resource type="AudioStream" uid="uid://x31a54fy0kw7" path="res://Assets/Audio/SFX/Player/sfx_player_dash_a.mp3" id="5_v4sx1"]
-[ext_resource type="Texture2D" uid="uid://co14m14vx3kuw" path="res://Assets/Textures/player/spiked_triangle_dash.png" id="6_7k82j"]
 [ext_resource type="AudioStream" uid="uid://dmercsex6k7kj" path="res://Assets/Audio/SFX/Player/sfx_player_bounce.wav" id="6_bounce"]
 [ext_resource type="Texture2D" uid="uid://cbm281jaqtmu3" path="res://Assets/Textures/Effects/Burst.png" id="6_yfysr"]
 [ext_resource type="Texture2D" uid="uid://kly8xun3f4ln" path="res://Assets/Textures/Effects/Bounce1.png" id="7_p1awi"]
-[ext_resource type="Texture2D" uid="uid://dk22fjaiv7lfw" path="res://Assets/Textures/player/sawblade_blue.png" id="7_v3ep7"]
 [ext_resource type="Texture2D" uid="uid://dl5hn1btro5a0" path="res://Assets/Textures/Effects/Burst2.png" id="7_wobkw"]
 [ext_resource type="Texture2D" uid="uid://dl6lccw32aa04" path="res://Assets/Textures/Effects/Bounce2.png" id="8_mefwt"]
 [ext_resource type="Texture2D" uid="uid://w388e3i5fgy8" path="res://Assets/Textures/Effects/Burst3.png" id="8_oh7yv"]
-[ext_resource type="Texture2D" uid="uid://cqnd2nfu37563" path="res://Assets/Textures/player/sawblade_red.png" id="8_stoj2"]
 [ext_resource type="Texture2D" uid="uid://dlxa015m1e1t1" path="res://Assets/Textures/Effects/Bounce3.png" id="9_n3j46"]
 [ext_resource type="Texture2D" uid="uid://dvxb2w0hifns6" path="res://Assets/Textures/Effects/Null.png" id="9_p1awi"]
 [ext_resource type="AudioStream" uid="uid://obgrkrd0cca3" path="res://Assets/Audio/SFX/Player/sfx_player_damaged.wav" id="13_mefwt"]
@@ -22,54 +17,128 @@
 [ext_resource type="PackedScene" uid="uid://6g7mdpoxiv0h" path="res://UI/HUD/XpBar/Xpbar.tscn" id="20_0grde"]
 [ext_resource type="PackedScene" uid="uid://db862s4lyyo60" path="res://UI/HUD/ComboSystem/combos.tscn" id="21_r1fon"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_owt54"]
+atlas = ExtResource("3_owt54")
+region = Rect2(0, 374, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilyy0"]
+atlas = ExtResource("3_owt54")
+region = Rect2(271, 374, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6y6o"]
+atlas = ExtResource("3_owt54")
+region = Rect2(542, 374, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxuot"]
+atlas = ExtResource("3_owt54")
+region = Rect2(813, 374, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0grde"]
+atlas = ExtResource("3_owt54")
+region = Rect2(1084, 374, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1fon"]
+atlas = ExtResource("3_owt54")
+region = Rect2(1355, 374, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qfp7"]
+atlas = ExtResource("3_owt54")
+region = Rect2(1626, 374, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pis8e"]
+atlas = ExtResource("3_owt54")
+region = Rect2(1897, 374, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcxso"]
+atlas = ExtResource("3_owt54")
+region = Rect2(0, 25, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1hiu"]
+atlas = ExtResource("3_owt54")
+region = Rect2(271, 25, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sjle"]
+atlas = ExtResource("3_owt54")
+region = Rect2(542, 25, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxouv"]
+atlas = ExtResource("3_owt54")
+region = Rect2(813, 25, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rows"]
+atlas = ExtResource("3_owt54")
+region = Rect2(1084, 25, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i431c"]
+atlas = ExtResource("3_owt54")
+region = Rect2(1355, 25, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1upd"]
+atlas = ExtResource("3_owt54")
+region = Rect2(1626, 25, 271, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ity1y"]
+atlas = ExtResource("3_owt54")
+region = Rect2(1897, 25, 271, 349)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ayxd"]
 animations = [{
 "frames": [{
-"duration": 5.0,
-"texture": ExtResource("3_1l35o")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owt54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilyy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6y6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxuot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0grde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1fon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qfp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pis8e")
 }],
 "loop": 1,
-"name": &"bounce",
+"name": &"Dashing",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_cbtp0")
-}],
-"loop": 1,
-"name": &"dash",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_pcxso")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_h0tan")
-}],
-"loop": 1,
-"name": &"spikeybounce",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_m1hiu")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_7k82j")
-}],
-"loop": 1,
-"name": &"spikeydash",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_8sjle")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_v3ep7")
-}],
-"loop": 1,
-"name": &"supermodebounce",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_rxouv")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_stoj2")
+"texture": SubResource("AtlasTexture_1rows")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i431c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1upd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ity1y")
 }],
 "loop": 1,
-"name": &"supermodedash",
+"name": &"Idle",
 "speed": 5.0
 }]
 
@@ -137,11 +206,13 @@ script = ExtResource("1_jxuot")
 enemy_scene = ExtResource("2_stoj2")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1606221345]
-position = Vector2(1.0000005, -0.9999995)
-scale = Vector2(0.3, 0.3)
+position = Vector2(-16, 5)
+rotation = -0.53232545
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4ayxd")
-animation = &"supermodedash"
-autoplay = "dash"
+animation = &"Dashing"
+autoplay = "Idle"
+flip_h = true
 
 [node name="dash_timer" type="Timer" parent="." unique_id=528950344]
 wait_time = 0.5
