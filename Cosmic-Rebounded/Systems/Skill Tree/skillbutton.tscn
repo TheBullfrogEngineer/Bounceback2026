@@ -9,7 +9,6 @@
 script = ExtResource("3_2jucl")
 max_level = 3
 texture = ExtResource("3_kk34i")
-prerequisite = 3
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [node name="SkillButton" type="TextureButton" unique_id=1345481500]

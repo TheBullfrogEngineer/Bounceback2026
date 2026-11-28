@@ -66,7 +66,6 @@ script = ExtResource("9_57l06")
 description = "Unlock Thrust"
 max_level = 1
 texture = ExtResource("10_57l06")
-prerequisite = 1
 start_level = 1
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
@@ -75,7 +74,6 @@ script = ExtResource("9_57l06")
 description = "Unlock Dash"
 max_level = 1
 texture = ExtResource("10_57l06")
-prerequisite = 1
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="Resource" id="Resource_15buc"]
@@ -83,7 +81,6 @@ script = ExtResource("9_57l06")
 description = "Bullet I: +10% Dash Speed"
 max_level = 1
 texture = ExtResource("10_57l06")
-prerequisite = 1
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="Resource" id="Resource_fv7j6"]
@@ -91,7 +88,6 @@ script = ExtResource("9_57l06")
 description = "Endurance I: +2s Dash Duration"
 max_level = 2
 texture = ExtResource("10_57l06")
-prerequisite = 2
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="Resource" id="Resource_57l06"]
@@ -99,7 +95,6 @@ script = ExtResource("9_57l06")
 description = "Unlock Bounce"
 max_level = 1
 texture = ExtResource("10_57l06")
-prerequisite = 1
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="Resource" id="Resource_cxav0"]
@@ -107,7 +102,6 @@ script = ExtResource("9_57l06")
 description = "Retention I: +33% Bounce Energy Output"
 max_level = 3
 texture = ExtResource("10_57l06")
-prerequisite = 3
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="Resource" id="Resource_lvbpu"]
@@ -115,7 +109,6 @@ script = ExtResource("9_57l06")
 description = "Retention II: +66% Bounce Energy Output"
 max_level = 6
 texture = ExtResource("10_57l06")
-prerequisite = 6
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="Resource" id="Resource_o8s0j"]
@@ -123,7 +116,6 @@ script = ExtResource("9_57l06")
 description = "Retention III: +100% Bounce Energy Output"
 max_level = 10
 texture = ExtResource("10_57l06")
-prerequisite = 10
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="Resource" id="Resource_ge871"]
@@ -131,7 +123,6 @@ script = ExtResource("9_57l06")
 description = "Speed I: +5% Thrust Speed"
 max_level = 1
 texture = ExtResource("10_57l06")
-prerequisite = 1
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="Resource" id="Resource_ttvof"]
@@ -139,7 +130,6 @@ script = ExtResource("9_57l06")
 description = "Speed II: +10% Thrust Speed"
 max_level = 2
 texture = ExtResource("10_57l06")
-prerequisite = 2
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="Resource" id="Resource_t738f"]
@@ -147,7 +137,6 @@ script = ExtResource("9_57l06")
 description = "Speed III: +15% Thrust Speed"
 max_level = 3
 texture = ExtResource("10_57l06")
-prerequisite = 3
 metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_15buc"]
@@ -472,14 +461,14 @@ theme_override_font_sizes/font_size = 30
 text = "Upgrade"
 
 [node name="Mobility2" type="Panel" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select" unique_id=699622236]
-modulate = Color(1, 1, 1, 0.65000045)
+modulate = Color(1, 1, 1, 0.65)
 z_index = -1
 layout_mode = 0
 offset_left = 220.0
 offset_top = -150.0
 offset_right = 420.0
 offset_bottom = 150.0
-scale = Vector2(0.7500005, 0.7500005)
+scale = Vector2(0.75, 0.75)
 pivot_offset = Vector2(100, 150)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ggs6p")
@@ -519,14 +508,14 @@ theme_override_font_sizes/font_size = 30
 text = "Upgrade"
 
 [node name="Mobility3" type="Panel" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select" unique_id=1640377976]
-modulate = Color(1, 1, 1, 0.30000025)
+modulate = Color(1, 1, 1, 0.3)
 z_index = -2
 layout_mode = 0
 offset_left = 440.0
 offset_top = -150.0
 offset_right = 640.0
 offset_bottom = 150.0
-scale = Vector2(0.5000005, 0.5000005)
+scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(100, 150)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ggs6p")
@@ -619,6 +608,7 @@ anchor_bottom = 0.5
 offset_top = -120.0
 offset_bottom = -80.0
 grow_vertical = 2
+disabled = true
 data = SubResource("Resource_ohbit")
 
 [node name="Bullet I" parent="Menu/Panels/MobilityTree/Unlock Thrust/Unlock Dash" unique_id=1884219300 instance=ExtResource("8_6q4ei")]
@@ -627,6 +617,7 @@ offset_left = 60.0
 offset_top = -30.0
 offset_right = 100.0
 offset_bottom = 10.0
+disabled = true
 data = SubResource("Resource_15buc")
 
 [node name="Endurance I" parent="Menu/Panels/MobilityTree/Unlock Thrust/Unlock Dash" unique_id=19376321 instance=ExtResource("8_6q4ei")]
@@ -635,6 +626,7 @@ offset_left = 60.0
 offset_top = 30.0
 offset_right = 100.0
 offset_bottom = 70.0
+disabled = true
 data = SubResource("Resource_fv7j6")
 
 [node name="Unlock Bounce" parent="Menu/Panels/MobilityTree/Unlock Thrust" unique_id=1146336358 instance=ExtResource("8_6q4ei")]
@@ -646,42 +638,49 @@ offset_top = 60.0
 offset_bottom = 100.0
 grow_vertical = 0
 offset_transform_position = Vector2(20, -20)
+disabled = true
 data = SubResource("Resource_57l06")
 
 [node name="Retention I" parent="Menu/Panels/MobilityTree/Unlock Thrust/Unlock Bounce" unique_id=1296539746 instance=ExtResource("8_6q4ei")]
 layout_mode = 0
 offset_left = 60.0
 offset_right = 100.0
+disabled = true
 data = SubResource("Resource_cxav0")
 
 [node name="Retention II" parent="Menu/Panels/MobilityTree/Unlock Thrust/Unlock Bounce/Retention I" unique_id=1949460374 instance=ExtResource("8_6q4ei")]
 layout_mode = 0
 offset_left = 60.0
 offset_right = 100.0
+disabled = true
 data = SubResource("Resource_lvbpu")
 
 [node name="Retention II" parent="Menu/Panels/MobilityTree/Unlock Thrust/Unlock Bounce/Retention I/Retention II" unique_id=1448226072 instance=ExtResource("8_6q4ei")]
 layout_mode = 0
 offset_left = 60.0
 offset_right = 100.0
+disabled = true
 data = SubResource("Resource_o8s0j")
 
 [node name="Speed I" parent="Menu/Panels/MobilityTree/Unlock Thrust" unique_id=171724413 instance=ExtResource("8_6q4ei")]
 layout_mode = 0
 offset_left = 60.0
 offset_right = 100.0
+disabled = true
 data = SubResource("Resource_ge871")
 
 [node name="Speed II" parent="Menu/Panels/MobilityTree/Unlock Thrust/Speed I" unique_id=2004523029 instance=ExtResource("8_6q4ei")]
 layout_mode = 0
 offset_left = 60.0
 offset_right = 100.0
+disabled = true
 data = SubResource("Resource_ttvof")
 
 [node name="Speed III" parent="Menu/Panels/MobilityTree/Unlock Thrust/Speed I/Speed II" unique_id=409174386 instance=ExtResource("8_6q4ei")]
 layout_mode = 0
 offset_left = 60.0
 offset_right = 100.0
+disabled = true
 data = SubResource("Resource_t738f")
 
 [node name="MainButtons" type="Control" parent="Menu" unique_id=1060669825]

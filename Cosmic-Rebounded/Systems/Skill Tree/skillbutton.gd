@@ -35,7 +35,7 @@ func _on_pressed() -> void:
 	
 	var skills = get_children()
 	for skill in skills:
-		if skill is SkillNode and level == data.prerequisite:
+		if skill is SkillNode and level == data.max_level:
 			skill.disabled = false
 
 
