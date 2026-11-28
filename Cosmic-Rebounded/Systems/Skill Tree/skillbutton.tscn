@@ -1,19 +1,26 @@
 [gd_scene format=3 uid="uid://mcp2vsl5wpyg"]
 
-[ext_resource type="Texture2D" uid="uid://bn1525ulmm017" path="res://Assets/Textures/icon.svg" id="1_cbw75"]
 [ext_resource type="Script" uid="uid://b20uh6olaff1c" path="res://Systems/Skill Tree/skillbutton.gd" id="2_w7ny1"]
-[ext_resource type="Texture2D" uid="uid://bc6hgxjwk6kg1" path="res://Assets/Textures/ui/text_box.png" id="3_3kw78"]
+[ext_resource type="Script" uid="uid://4uf0x8nyt8at" path="res://Systems/Skill Tree/Mobility/MobilityData.gd" id="3_2jucl"]
 [ext_resource type="FontFile" uid="uid://cvnffk7tyys7h" path="res://Assets/Textures/ui/fonts/space_age/space age.ttf" id="3_k0l4j"]
+[ext_resource type="Texture2D" uid="uid://b0s0rnfpvp1kk" path="res://1hleft.png" id="3_kk34i"]
+
+[sub_resource type="Resource" id="Resource_3kw78"]
+script = ExtResource("3_2jucl")
+max_level = 3
+texture = ExtResource("3_kk34i")
+prerequisite = 3
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [node name="SkillButton" type="TextureButton" unique_id=1345481500]
 z_index = 1
 offset_right = 40.0
 offset_bottom = 40.0
 toggle_mode = true
-texture_normal = ExtResource("1_cbw75")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_w7ny1")
+data = SubResource("Resource_3kw78")
 
 [node name="Panel" type="Panel" parent="." unique_id=919241205]
 layout_mode = 0
@@ -40,22 +47,7 @@ top_level = true
 width = 3.0
 default_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1411681966]
-z_index = 646
-layout_mode = 0
-offset_left = -50.999996
-offset_top = 44.0
-offset_right = 194.0
-offset_bottom = 89.0
-scale = Vector2(0.595, 0.595)
-texture = ExtResource("3_3kw78")
-region_rect = Rect2(0, 0, 96, 96)
-patch_margin_left = 15
-patch_margin_top = 15
-patch_margin_right = 15
-patch_margin_bottom = 15
-
-[node name="Description" type="Label" parent="NinePatchRect" unique_id=1331882921]
+[node name="Description" type="Label" parent="." unique_id=1331882921]
 z_index = 5
 layout_mode = 1
 anchors_preset = 8
@@ -63,15 +55,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -106.0
-offset_top = -8.500008
-offset_right = 106.0
-offset_bottom = 14.500008
+offset_left = -61.182495
+offset_top = 32.329994
+offset_right = 150.8175
+offset_bottom = 55.33001
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.26611602, 0.52934515, 0.26051822, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 13
 theme_override_fonts/font = ExtResource("3_k0l4j")
 text = "Max Health + 20%"
+horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

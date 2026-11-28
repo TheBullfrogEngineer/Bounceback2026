@@ -11,7 +11,9 @@
 [ext_resource type="FontFile" uid="uid://cvnffk7tyys7h" path="res://Assets/Textures/ui/fonts/space_age/space age.ttf" id="7_qv7eq"]
 [ext_resource type="PackedScene" uid="uid://mcp2vsl5wpyg" path="res://Systems/Skill Tree/skillbutton.tscn" id="8_6q4ei"]
 [ext_resource type="Texture2D" uid="uid://csw7l4j253qwn" path="res://Assets/Textures/ui/pause_menu/option2.png" id="8_57l06"]
+[ext_resource type="Script" uid="uid://4uf0x8nyt8at" path="res://Systems/Skill Tree/Mobility/MobilityData.gd" id="9_57l06"]
 [ext_resource type="Texture2D" uid="uid://dcvvpkx2n00aj" path="res://Assets/Textures/ui/pause_menu/option2_pressed.png" id="9_ohbit"]
+[ext_resource type="Texture2D" uid="uid://b0s0rnfpvp1kk" path="res://1hleft.png" id="10_57l06"]
 [ext_resource type="Texture2D" uid="uid://igdtgn16gtme" path="res://Assets/Textures/ui/pause_menu/option3.png" id="10_ge871"]
 [ext_resource type="Texture2D" uid="uid://c08rup67fkr1u" path="res://Assets/Textures/ui/pause_menu/option3_pressed.png" id="11_ttvof"]
 [ext_resource type="AudioStream" uid="uid://83kqg3nw8vpf" path="res://Assets/Audio/SFX/UI/sfx_ui_hover.wav" id="12_t738f"]
@@ -58,6 +60,95 @@ corner_radius_bottom_left = 20
 shadow_color = Color(0, 0, 0.5411765, 0.6)
 shadow_size = 7
 anti_aliasing_size = 10.0
+
+[sub_resource type="Resource" id="Resource_2jucl"]
+script = ExtResource("9_57l06")
+description = "Unlock Thrust"
+max_level = 1
+texture = ExtResource("10_57l06")
+prerequisite = 1
+start_level = 1
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
+
+[sub_resource type="Resource" id="Resource_ohbit"]
+script = ExtResource("9_57l06")
+description = "Unlock Dash"
+max_level = 1
+texture = ExtResource("10_57l06")
+prerequisite = 1
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
+
+[sub_resource type="Resource" id="Resource_15buc"]
+script = ExtResource("9_57l06")
+description = "Bullet I: +10% Dash Speed"
+max_level = 1
+texture = ExtResource("10_57l06")
+prerequisite = 1
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
+
+[sub_resource type="Resource" id="Resource_fv7j6"]
+script = ExtResource("9_57l06")
+description = "Endurance I: +2s Dash Duration"
+max_level = 2
+texture = ExtResource("10_57l06")
+prerequisite = 2
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
+
+[sub_resource type="Resource" id="Resource_57l06"]
+script = ExtResource("9_57l06")
+description = "Unlock Bounce"
+max_level = 1
+texture = ExtResource("10_57l06")
+prerequisite = 1
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
+
+[sub_resource type="Resource" id="Resource_cxav0"]
+script = ExtResource("9_57l06")
+description = "Retention I: +33% Bounce Energy Output"
+max_level = 3
+texture = ExtResource("10_57l06")
+prerequisite = 3
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
+
+[sub_resource type="Resource" id="Resource_lvbpu"]
+script = ExtResource("9_57l06")
+description = "Retention II: +66% Bounce Energy Output"
+max_level = 6
+texture = ExtResource("10_57l06")
+prerequisite = 6
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
+
+[sub_resource type="Resource" id="Resource_o8s0j"]
+script = ExtResource("9_57l06")
+description = "Retention III: +100% Bounce Energy Output"
+max_level = 10
+texture = ExtResource("10_57l06")
+prerequisite = 10
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
+
+[sub_resource type="Resource" id="Resource_ge871"]
+script = ExtResource("9_57l06")
+description = "Speed I: +5% Thrust Speed"
+max_level = 1
+texture = ExtResource("10_57l06")
+prerequisite = 1
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
+
+[sub_resource type="Resource" id="Resource_ttvof"]
+script = ExtResource("9_57l06")
+description = "Speed II: +10% Thrust Speed"
+max_level = 2
+texture = ExtResource("10_57l06")
+prerequisite = 2
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
+
+[sub_resource type="Resource" id="Resource_t738f"]
+script = ExtResource("9_57l06")
+description = "Speed III: +15% Thrust Speed"
+max_level = 3
+texture = ExtResource("10_57l06")
+prerequisite = 3
+metadata/_custom_type_script = "uid://4uf0x8nyt8at"
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_15buc"]
 
@@ -380,6 +471,100 @@ theme_override_fonts/font = ExtResource("7_qv7eq")
 theme_override_font_sizes/font_size = 30
 text = "Upgrade"
 
+[node name="Mobility2" type="Panel" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select" unique_id=699622236]
+modulate = Color(1, 1, 1, 0.65000045)
+z_index = -1
+layout_mode = 0
+offset_left = 220.0
+offset_top = -150.0
+offset_right = 420.0
+offset_bottom = 150.0
+scale = Vector2(0.7500005, 0.7500005)
+pivot_offset = Vector2(100, 150)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ggs6p")
+
+[node name="Label" type="Label" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select/Mobility2" unique_id=1897659223]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.5
+offset_top = 3.0340576
+offset_right = 130.5
+offset_bottom = 46.034058
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_qv7eq")
+theme_override_font_sizes/font_size = 45
+text = "Mobility"
+
+[node name="UpgradeMobility" type="Button" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select/Mobility2" unique_id=1446604631]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -15.5
+offset_right = 37.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_qv7eq")
+theme_override_font_sizes/font_size = 30
+text = "Upgrade"
+
+[node name="Mobility3" type="Panel" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select" unique_id=1640377976]
+modulate = Color(1, 1, 1, 0.30000025)
+z_index = -2
+layout_mode = 0
+offset_left = 440.0
+offset_top = -150.0
+offset_right = 640.0
+offset_bottom = 150.0
+scale = Vector2(0.5000005, 0.5000005)
+pivot_offset = Vector2(100, 150)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ggs6p")
+
+[node name="Label" type="Label" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select/Mobility3" unique_id=152595733]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.5
+offset_top = 3.0340576
+offset_right = 130.5
+offset_bottom = 46.034058
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_qv7eq")
+theme_override_font_sizes/font_size = 45
+text = "Mobility"
+
+[node name="UpgradeMobility" type="Button" parent="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select/Mobility3" unique_id=145016184]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -15.5
+offset_right = 37.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_qv7eq")
+theme_override_font_sizes/font_size = 30
+text = "Upgrade"
+
 [node name="Left" type="Button" parent="Menu/Panels/SkilltreesPanel" unique_id=1672922587]
 unique_name_in_owner = true
 layout_mode = 0
@@ -414,67 +599,90 @@ grow_vertical = 2
 scale = Vector2(1.1465292, 1.1078826)
 theme_override_styles/panel = SubResource("StyleBoxFlat_4hy44")
 
-[node name="SkillButton" parent="Menu/Panels/MobilityTree" unique_id=1345481500 instance=ExtResource("8_6q4ei")]
+[node name="Unlock Thrust" parent="Menu/Panels/MobilityTree" unique_id=1345481500 instance=ExtResource("8_6q4ei")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -276.92273
-offset_top = -10.0
-offset_right = -236.92271
-offset_bottom = 30.0
-grow_horizontal = 2
+offset_left = 20.0
+offset_top = -20.00032
+offset_right = 60.0
+offset_bottom = 19.99968
 grow_vertical = 2
+data = SubResource("Resource_2jucl")
 
-[node name="SkillButton" parent="Menu/Panels/MobilityTree/SkillButton" unique_id=1758940220 instance=ExtResource("8_6q4ei")]
-layout_mode = 0
-offset_left = 34.88793
-offset_top = 109.21734
-offset_right = 74.88793
-offset_bottom = 149.21733
-disabled = true
+[node name="Unlock Dash" parent="Menu/Panels/MobilityTree/Unlock Thrust" unique_id=1841004389 instance=ExtResource("8_6q4ei")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -120.0
+offset_bottom = -80.0
+grow_vertical = 2
+data = SubResource("Resource_ohbit")
 
-[node name="SkillButton" parent="Menu/Panels/MobilityTree/SkillButton/SkillButton" unique_id=1733767311 instance=ExtResource("8_6q4ei")]
+[node name="Bullet I" parent="Menu/Panels/MobilityTree/Unlock Thrust/Unlock Dash" unique_id=1884219300 instance=ExtResource("8_6q4ei")]
 layout_mode = 0
-offset_left = 106.4081
-offset_top = -25.273434
-offset_right = 146.4081
-offset_bottom = 14.726566
-disabled = true
+offset_left = 60.0
+offset_top = -30.0
+offset_right = 100.0
+offset_bottom = 10.0
+data = SubResource("Resource_15buc")
 
-[node name="SkillButton2" parent="Menu/Panels/MobilityTree/SkillButton/SkillButton" unique_id=237019057 instance=ExtResource("8_6q4ei")]
+[node name="Endurance I" parent="Menu/Panels/MobilityTree/Unlock Thrust/Unlock Dash" unique_id=19376321 instance=ExtResource("8_6q4ei")]
 layout_mode = 0
-offset_left = 104.66371
-offset_top = 27.07868
-offset_right = 144.66371
-offset_bottom = 67.07868
-disabled = true
+offset_left = 60.0
+offset_top = 30.0
+offset_right = 100.0
+offset_bottom = 70.0
+data = SubResource("Resource_fv7j6")
 
-[node name="SkillButton2" parent="Menu/Panels/MobilityTree/SkillButton" unique_id=1153498797 instance=ExtResource("8_6q4ei")]
-layout_mode = 0
-offset_left = 66.28704
-offset_top = -62.280964
-offset_right = 106.28704
-offset_bottom = -22.280964
-disabled = true
+[node name="Unlock Bounce" parent="Menu/Panels/MobilityTree/Unlock Thrust" unique_id=1146336358 instance=ExtResource("8_6q4ei")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 60.0
+offset_bottom = 100.0
+grow_vertical = 0
+offset_transform_position = Vector2(20, -20)
+data = SubResource("Resource_57l06")
 
-[node name="SkillButton3" parent="Menu/Panels/MobilityTree/SkillButton" unique_id=262976081 instance=ExtResource("8_6q4ei")]
+[node name="Retention I" parent="Menu/Panels/MobilityTree/Unlock Thrust/Unlock Bounce" unique_id=1296539746 instance=ExtResource("8_6q4ei")]
 layout_mode = 0
-offset_left = 54.94848
-offset_top = -148.0301
-offset_right = 94.94848
-offset_bottom = -108.030106
-disabled = true
+offset_left = 60.0
+offset_right = 100.0
+data = SubResource("Resource_cxav0")
 
-[node name="SkillButton4" parent="Menu/Panels/MobilityTree/SkillButton" unique_id=23070735 instance=ExtResource("8_6q4ei")]
+[node name="Retention II" parent="Menu/Panels/MobilityTree/Unlock Thrust/Unlock Bounce/Retention I" unique_id=1949460374 instance=ExtResource("8_6q4ei")]
 layout_mode = 0
-offset_left = 65.41484
-offset_top = 21.662943
-offset_right = 105.41484
-offset_bottom = 61.66294
-disabled = true
+offset_left = 60.0
+offset_right = 100.0
+data = SubResource("Resource_lvbpu")
+
+[node name="Retention II" parent="Menu/Panels/MobilityTree/Unlock Thrust/Unlock Bounce/Retention I/Retention II" unique_id=1448226072 instance=ExtResource("8_6q4ei")]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 100.0
+data = SubResource("Resource_o8s0j")
+
+[node name="Speed I" parent="Menu/Panels/MobilityTree/Unlock Thrust" unique_id=171724413 instance=ExtResource("8_6q4ei")]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 100.0
+data = SubResource("Resource_ge871")
+
+[node name="Speed II" parent="Menu/Panels/MobilityTree/Unlock Thrust/Speed I" unique_id=2004523029 instance=ExtResource("8_6q4ei")]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 100.0
+data = SubResource("Resource_ttvof")
+
+[node name="Speed III" parent="Menu/Panels/MobilityTree/Unlock Thrust/Speed I/Speed II" unique_id=409174386 instance=ExtResource("8_6q4ei")]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 100.0
+data = SubResource("Resource_t738f")
 
 [node name="MainButtons" type="Control" parent="Menu" unique_id=1060669825]
 unique_name_in_owner = true
@@ -594,6 +802,8 @@ bus = &"SFX"
 [connection signal="value_changed" from="Menu/Panels/VolumePanel/MusicSlider" to="Menu" method="_on_music_slider_value_changed"]
 [connection signal="color_changed" from="Menu/Panels/SettingsPanel/ColorPickerButton" to="Menu" method="_on_color_picker_button_color_changed"]
 [connection signal="pressed" from="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select/Mobility/UpgradeMobility" to="Menu" method="_on_upgrade_mobility_pressed"]
+[connection signal="pressed" from="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select/Mobility2/UpgradeMobility" to="Menu" method="_on_upgrade_mobility_pressed"]
+[connection signal="pressed" from="Menu/Panels/SkilltreesPanel/CarouselContainer/Panel Select/Mobility3/UpgradeMobility" to="Menu" method="_on_upgrade_mobility_pressed"]
 [connection signal="pressed" from="Menu/Panels/SkilltreesPanel/Left" to="Menu" method="_on_left_pressed"]
 [connection signal="pressed" from="Menu/Panels/SkilltreesPanel/Right" to="Menu" method="_on_right_pressed"]
 [connection signal="mouse_entered" from="Menu/MainButtons/PlayButton" to="Menu" method="_on_play_button_mouse_entered"]
