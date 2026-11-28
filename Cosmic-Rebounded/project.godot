@@ -30,6 +30,7 @@ Levelmanager="*uid://crn5rv6bwd4uy"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
